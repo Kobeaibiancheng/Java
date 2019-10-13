@@ -11,6 +11,8 @@ public class Test{
 			if(num%j == 0) {
 				System.out.println("不是素数");
 				break;
+				
+				
 			}
 		}
 		if(j == num) {
