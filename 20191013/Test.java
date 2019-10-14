@@ -2,27 +2,28 @@ import java.util.Scanner;
 
 
 public class Test{
+	//判定一个数字是否是素数
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("请输入一个整数：");
 		int num = scan.nextInt();
-		int j = 2;
+		int j = 0;
 		for(j = 2; j < num; j++) {
 			if(num%j == 0) {
 				System.out.println("不是素数");
 				break;
-				
-				
 			}
 		}
 		if(j == num) {
 			System.out.println("是素数");
 		}
 		
-		
+		scan.close();
 	
 	}
 	
+	
+	//打印 1 - 100 之间所有的素数
 	public static void printPrime(int num) {
 		int i = 2;
 		for(i = 2;i < num;i++){
