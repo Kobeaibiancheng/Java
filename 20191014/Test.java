@@ -3,12 +3,7 @@
             那么将b赋值给a，（a%b）赋值给b。
                      （新的a）          （新的b）
 			重复上述，直到a%b等于0，b为a的最大公约数 
-			
-			
-			
-			
-			
-			乘法口诀表未完成
+
 */
 public class Test {
 	//求两个正整数的最大公约数    ---    辗转相除法
@@ -65,8 +60,9 @@ public class Test {
 	public static void printTable() {
 		for(int i = 1;i <= 9;i++) {
 			for(int j = 1;j <= i;j++) {
-				System.out.println(i * j + i*j);
+				System.out.print(i + " * " + j + " = " + i*j +" ");
 			}
+			System.out.println();
 		}
 		
 	}
