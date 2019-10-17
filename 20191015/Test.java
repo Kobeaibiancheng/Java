@@ -1,12 +1,31 @@
+import java.util.Scanner;
+
 public class Test {
 	//编写代码模拟三次密码输入的场景。 
 	//最多能输入三次密码，密码正确，提示“登录成功”,密码错误， 可以重新输入，
 	//最多输入三次。三次均错，则提示退出程序
 	public static void main(String[] args) {
-		
-		
-		
+		int count = 1;
+		int i = 0;
+		String str = "123456";
+		Scanner scan = new Scanner(System.in);
+		System.out.println("请输入密码->");
+		for(i = 0;i < 3;i++) {
+			String s = scan.nextLine();
+			if(s.equals(str)) {               //两个字符串比较    
+				System.out.println("登陆成功！");
+				break;
+			}
+			else {
+				System.out.println("密码输入错误！");
+			}
+		}
+		if(i == 3) {
+				System.out.println("退出程序！");
+			}
 	}
+	
+	
 	//写一个函数返回参数二进制中 1 的个数 比如： 15 0000 1111 4 个 1
 	public static int numOne(int num) {
 		int count = 0;
@@ -22,6 +41,7 @@ public class Test {
 		System.out.println(numOne(15));//00000000 00000000 00000000 000000101
 		
 	}
+	
 	//输出一个整数的每一位
 	public static void printEach(int num) {
 		if(num > 9) {

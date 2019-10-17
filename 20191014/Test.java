@@ -9,29 +9,20 @@ public class Test {
 	//求两个正整数的最大公约数    ---    辗转相除法
 	public static int maxCommonDivisor(int a,int b) {
 		int result = 0;
-		if(a > b) {
+		
 			while(b != 0) {
 				result = a % b;
 				a = b;
 				b = result;
 			}
-		}
-		else {
-			int tmp = a;
-			a = b;
-			b = tmp;
-			while(b != 0) {
-				result = a % b;
-				a = b;
-				b = result;
-			}
-		}
+	
+		
 		return a;
 		
 	}
 	public static void main(String[] args) {
-		int a = 8;
-		int b = 6;
+		int a = 24;
+		int b = 18;
 		int ret = maxCommonDivisor(a,b);
 		System.out.println(ret);
 	}
