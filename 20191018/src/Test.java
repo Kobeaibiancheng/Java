@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Test{
@@ -14,9 +15,34 @@ public class Test{
         }
     }
 
+    public static int addSum(int[] arr) {
+        int ret = 0;
+        for (int i = 0; i < arr.length; i++) {
+            ret += arr[i];
+        }
+        return ret;
+    }
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int num = scan.nextInt();
-        printNum(num);
+        int[] arr = {1,2,3,4,5,6,7,8,9,10};
+        int ret = addSum(arr);
+        System.out.println(ret);
+        int[][] array1 = {{1,2,3},{4,5,6}};
+        int[][] array2 = new int[][]{{1,2,3},{4,5,6}};
+        int[][] array3 = new int[2][3];
+        int[][] array4 = new int[2][];
+        System.out.println(array1[0]);//运算结果：[I@1540e19d
+        System.out.println(array2[1]);//运算结果：[I@677327b6
+        /*for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
+        System.out.println();
+        System.out.println(Arrays.toString(arr));*/
+        //Scanner scan = new Scanner(System.in);
+        //int num = scan.nextInt();
+        //printNum(num);
     }
 }
