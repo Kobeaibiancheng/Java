@@ -173,9 +173,6 @@ class SingleList {
 
 
 
-
-
-
     //打印反转单链表
     public void displayRev(ListNode newHead) {
         ListNode prev = newHead;
