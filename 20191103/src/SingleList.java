@@ -169,4 +169,89 @@ class SingleList {
         }
     }
 
+
+
+
+
+
+
+
+    //打印反转单链表
+    public void displayRev(ListNode newHead) {
+        ListNode prev = newHead;
+
+        while(prev != null) {
+            System.out.print(prev.data + " ");
+            prev = prev.next;
+        }
+    }
+    //反转单链表
+    public ListNode reverseList() {
+        ListNode prev = null;
+        ListNode cur = this.head;
+        ListNode newHead = null;
+        while(cur != null) {
+            ListNode curNext = cur.next;
+            if(curNext == null) {
+                newHead =cur;
+            }
+            cur.next = prev;
+            prev = cur;
+            cur = curNext;
+        }
+        return newHead;
+    }
+
+    /**
+     * 头插法反转单链表
+     */
+
+    //压栈
+
+
+
+
+    //求单链表中间节点
+    public ListNode middleNode1() {
+        ListNode cur = this.head;
+        for (int i = 0; i < getLength()/2; i++) {
+            cur = cur.next;
+        }
+        return cur;
+    }
+    //求单链表中间节点       优化写法
+    public ListNode middleNode2() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+    //求单链表倒数第k哥节点
+    public ListNode findKthToTail(int k) {
+
+        if(k < 0 || this.head == null) {
+            return null;
+        }
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        for (int i = 0; i < k-1; i++) {
+            if(fast.next != null) {
+                fast = fast.next;
+            }
+            else {
+                System.out.println("没有该节点");
+                return null;
+            }
+        }
+        while(fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
 }
