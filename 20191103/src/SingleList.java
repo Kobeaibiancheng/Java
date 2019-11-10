@@ -183,7 +183,7 @@ class SingleList {
         }
     }
     //反转单链表
-    public ListNode reverseList() {
+    public ListNode reverseList1() {
         ListNode prev = null;
         ListNode cur = this.head;
         ListNode newHead = null;
@@ -202,7 +202,12 @@ class SingleList {
     /**
      * 头插法反转单链表
      */
+ /*   public ListNode reverseList2() {
+        ListNode prev = this.head;
+        ListNode cur = this.head.next;
 
+        
+    }*/
     //压栈
 
 
@@ -227,7 +232,7 @@ class SingleList {
         return slow;
     }
 
-    //求单链表倒数第k哥节点
+    //求单链表倒数第k个节点
     public ListNode findKthToTail(int k) {
 
         if(k < 0 || this.head == null) {
@@ -251,4 +256,161 @@ class SingleList {
         return slow;
     }
 
+
+    //以x为基准分割链表
+    public ListNode partition(int x) {
+        ListNode bs = null;
+        ListNode be = null;
+        ListNode as = null;
+        ListNode ae = null;
+        ListNode cur = this.head;
+        while(cur != null) {
+            if(cur.data < x) {
+                //判断是不是第一次尾插法
+                if(bs == null) {
+                    bs = cur;
+                    be = cur;
+                }
+                else {
+                    be.next = cur;
+                    be = cur;
+                }
+            }
+            else {
+                //判断是不是第一次尾插法
+                if(as == null) {
+                    as = cur;
+                    ae = cur;
+                }
+                else {
+                    ae.next = cur;
+                    ae = cur;
+                }
+            }
+            cur = cur.next;
+        }
+        if(bs == null) {
+            return as;
+        }
+        //将尾节点next置为null
+        if(ae != null) {
+            ae.next = null;
+        }
+        be.next = as;
+        return bs;
+    }
+
+    //删除有序链表中重复的节点，前提是有序
+    public ListNode deleteDuplication() {
+        ListNode cur = this.head;
+        ListNode newHead = new ListNode(-1);
+        ListNode tmp = newHead;
+        while(cur != null) {
+            //重复的节点
+            if(cur.next != null && cur.data == cur.next.data) {
+                while(cur.next != null && cur.data == cur.next.data) {
+                    cur = cur.next;
+                }
+                cur = cur.next;
+            }
+            else {
+                tmp.next = cur;
+                tmp = tmp.next;
+                cur = cur.next;
+            }
+        }
+        //最后一个节点如果也是重复的，需要将tmp.next = null
+        tmp.next = null;
+        return newHead.next;
+    }
+
+
+    //判断单链表是否为回文结构
+    public boolean chkPalindrome() {
+        if(this.head == null) {
+            return false;
+        }
+        if(this.head.next == null) {
+            return true;
+        }
+        //1.找到中间节点
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        //2.反转中间节点的后半部分
+        ListNode cur = slow.next;
+        while(cur != null) {
+            ListNode curNext = cur.next;
+            cur.next = slow;
+            slow = cur;
+            cur = curNext;
+        }
+        //3.fast/slow 往前走， head 往后走
+        while(slow != this.head) {
+            if(slow.data == this.head.data) {
+                slow = slow.next;
+                this.head = this.head.next;
+            }
+            else {
+                return false;
+            }
+            if(this.head.next == slow) {
+                return true;
+            }
+        }
+        return true;
+    }
+
+
+    //制造一个带环的单链表
+    public void createLoop() {
+        ListNode cur = this.head;
+        while(cur.next != null) {
+            cur = cur.next;
+        }
+        cur.next = this.head.next.next;
+    }
+    /**
+     * fast走两步，slow走一步
+     * 一个走一步，一个走三步耗费的时间会长，甚至有可能不能够相遇
+     * 判断链表是否有环，并且找到环的入口，写博客总结
+     */
+    //判断单链表是否有环
+    public boolean hasCycle() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next.next;
+            if(fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //找到单链表环的入口
+    public ListNode detectCycle() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast == slow) {
+                break;
+            }
+        }
+        if(fast == null || fast.next == null) {
+            return null;
+        }
+        slow = this.head;
+        while(slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
 }
