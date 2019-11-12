@@ -293,7 +293,7 @@ class SingleList {
             return as;
         }
         //将尾节点next置为null
-        if(ae != null) {
+        if(as != null) {
             ae.next = null;
         }
         be.next = as;
