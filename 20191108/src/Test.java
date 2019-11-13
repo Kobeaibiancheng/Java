@@ -7,14 +7,17 @@ public class Test {
         single.addFirst(40);
         single.addFirst(50);
         single.addFirst(60);
-*/
-        single.addLast(10);
-        single.addLast(20);
-        single.addLast(30);
-        single.addLast(40);
-        single.addLast(50);
 
-        System.out.println(single.middleNode().data);
-        single.display();
+
+        System.out.println(single.findKthToTail(0).data);
+
+        System.out.println(single.middleNode().data);*/
+        single.addLast(1);
+        single.addLast(3);
+        single.addLast(5);
+        single.addLast(4);
+        single.addLast(2);
+
+        single.display2(single.partition(4));
     }
 }
