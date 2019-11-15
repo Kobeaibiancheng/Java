@@ -90,5 +90,47 @@ class SingleList {
         return count;
     }
 
+    public ListNode removeElements(int key) {
+        ListNode prev = this.head;
+        ListNode cur = prev.next;
+        while(cur != null) {
+            if(prev.next.data == key) {
+                prev.next = cur.next;
+                cur = cur.next;
+            }
+            else {
+                cur = cur.next;
+                prev = prev.next;
+            }
+        }
+        if(this.head.data == key) {
+            return this.head.next;
+        }
+        return head;
+    }
+
+
+    //求单链表的倒数第k个节点
+    public ListNode findKthToTail(int k) {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        for (int i = 0; i < k-1; i++) {
+            if(fast.next != null){
+                fast = fast.next;
+            }
+            else {
+                System.out.println("没有改节点");
+                return null;
+            }
+        }
+        while(fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+    //在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针
+
 }
 

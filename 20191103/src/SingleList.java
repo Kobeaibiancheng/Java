@@ -235,7 +235,7 @@ class SingleList {
     //求单链表倒数第k个节点
     public ListNode findKthToTail(int k) {
 
-        if(k < 0 || this.head == null) {
+        if(k <= 0 || this.head == null) {
             return null;
         }
         ListNode fast = this.head;
