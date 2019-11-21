@@ -7,9 +7,9 @@ class TestDemo2 {
         shape.draw();
     }
     public static void main(String[] args) {
-        Rect rect = new Rect();
+/*        Rect rect = new Rect();
         Cycle cycle = new Cycle();
-        Flower flower = new Flower();
+        Flower flower = new Flower();*/
 
         Shape shape = new Rect();
         Shape shape2 = new Cycle();
