@@ -230,7 +230,43 @@ class SingleList {
         return true;
     }
 
-    //
+    //给定一个链表，判断链表中是否有环
+    public boolean hasCycle() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //给定一个链表，返回链表开始入环的第一个节点。如果链表无环,则返回null
+    public ListNode detectCycle() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast == slow) {
+                break;
+            }
+        }
+        if(fast == null || fast.next == null) {
+            return null;
+        }
+        fast = this.head;
+        while(fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return fast;
+    }
+
+    //在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指
 
 
 

@@ -96,7 +96,8 @@ public class Test {
         singleList1.addLast(9);
         singleList1.addLast(10);
         singleList.createCut(singleList.head,singleList1.head);
-        System.out.println(getIntersectionNode(singleList.head,singleList1.head).data);
+        System.out.println(getIntersectionNode(singleList.head,singleList1.head).data
+        );
 
     }
 }
