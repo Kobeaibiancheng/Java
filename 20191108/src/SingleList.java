@@ -148,5 +148,17 @@ class SingleList {
         be.next = as;
         return bs;
     }
-    
+    //判断链表是否带环
+    public boolean isCycle() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
