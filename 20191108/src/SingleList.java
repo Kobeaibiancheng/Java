@@ -148,6 +148,14 @@ class SingleList {
         be.next = as;
         return bs;
     }
+
+    public void makeCycle() {
+        ListNode cur = this.head;
+        while(cur.next != null) {
+            cur = cur.next;
+        }
+        cur.next = this.head.next.next;
+    }
     //判断链表是否带环
     public boolean isCycle() {
         ListNode fast = this.head;
@@ -161,4 +169,51 @@ class SingleList {
         }
         return false;
     }
+
+    //找到单链表环的入口
+    public ListNode detectCycle() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                break;
+            }
+        }
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+        slow = this.head;
+        while(fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+    // 在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。
+    public ListNode deleteDuplication() {
+        ListNode cur = this.head;
+        ListNode newHead = new ListNode(-1);
+        ListNode tmp = newHead;
+        while (cur != null) {
+            if(cur.next != null && cur.data == cur.next.data) {
+                while(cur.next != null && cur.data == cur.next.data) {
+                    cur = cur.next;
+                }
+                cur = cur.next;
+            }
+            else {
+                tmp.next = cur;
+                tmp = cur;
+                cur = cur.next;
+            }
+        }
+        tmp.next = null;
+        return newHead.next;
+    }
+    
+
+
 }
