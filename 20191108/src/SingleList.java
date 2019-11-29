@@ -213,7 +213,39 @@ class SingleList {
         tmp.next = null;
         return newHead.next;
     }
-    
+
+    //链表的会问结构
+    public boolean chkPalindrome() {
+        ListNode fast = this.head;
+        ListNode slow = this.head;
+        //找到中间节点
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        //反转后半部分
+        ListNode cur = slow.next;
+        while(cur != null) {
+            ListNode curNext = cur.next;
+            cur.next = slow;
+            slow = cur;
+            cur = curNext;
+        }
+        //同时走
+        while (slow != this.head) {
+            if (slow.data == this.head.data) {
+                slow = slow.next;
+                this.head = this.head.next;
+            }
+            else {
+                return false;
+            }
+            if (this.head.next == slow) {
+                return true;
+            }
+        }
+        return true;
+    }
 
 
 }
