@@ -76,8 +76,24 @@ public class TestDome1 {
         return (A.length() == B.length()) && (A+A).contains(B);
     }
 
+    /**
+     * 字符串集合
+     * @param str  "abcdefacb" -> "abcdef"
+     * @return
+     */
+    public static String gatherString(String str) {
+       StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char tmp = str.charAt(i);
+            if (!sb.toString().contains(tmp + "")) {
+                sb = sb.append(tmp);
+            }
+        }
+        return sb.toString();
+    }
     public static void main(String[] args) {
-
+       String str = "abcdefacb";
+        System.out.println(gatherString(str));
         /*String str = "aabbcdddeeef";//2a2b1c3d3e1f
         System.out.println(compress(str));
         StringBuilder src = null;
