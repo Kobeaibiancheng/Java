@@ -80,7 +80,7 @@ class Reboot implements IRunning{
     }
 }
 
-class TestDemo6 {
+public class TestDemo4 {
     public static void walk(IRunning running) {
         System.out.println("我带着伙伴去散步");
         running.run();
