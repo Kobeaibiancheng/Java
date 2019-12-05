@@ -1,8 +1,6 @@
 package string;
 
-import java.util.Arrays;
-
-public class TestDome1 {
+public class TestDemo1 {
     //分割平衡字符串
     public static int balancedStringSplit(String str) {
         if(str == null || "".equals(str)) {
@@ -72,7 +70,7 @@ public class TestDome1 {
      * @param B "cdeab"
      * @return
      */
-   public static boolean rotateString(String A, String B) {
+    public static boolean rotateString(String A, String B) {
         return (A.length() == B.length()) && (A+A).contains(B);
     }
 
@@ -82,7 +80,7 @@ public class TestDome1 {
      * @return
      */
     public static String gatherString(String str) {
-       StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
             char tmp = str.charAt(i);
             if (!sb.toString().contains(tmp + "")) {
@@ -91,10 +89,33 @@ public class TestDome1 {
         }
         return sb.toString();
     }
+
+/*    public static int compress(char[] chars) {
+        char ch = chars[0];
+        int count = 1;
+        StringBuilder str = new StringBuilder();
+        for(int i = 1; i < chars.length; i++) {
+            if(chars[i] == ch) {
+                count++;
+            }else{
+                if(count != 1) {
+                    str.append(ch).append(count);
+                    count = 1;
+                    ch = chars[i];
+                }
+            }
+        }
+        str.append(ch).append(count);
+        System.out.println(str);
+        return str.toString().toCharArray().length;
+    }*/
+
+
     public static void main(String[] args) {
-       String str = "abcdefacb";
+        char[] arr = {'a','b','b','b'};
+        /*String str = "abcdefacb";
         System.out.println(gatherString(str));
-        /*String str = "aabbcdddeeef";//2a2b1c3d3e1f
+        String str = "aabbcdddeeef";//2a2b1c3d3e1f
         System.out.println(compress(str));
         StringBuilder src = null;
          String str = "LLRRLRLR";
