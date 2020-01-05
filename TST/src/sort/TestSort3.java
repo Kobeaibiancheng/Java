@@ -69,10 +69,40 @@ public class TestSort3 {
             }
         }
     }
+
+    /**
+     * 希尔排序：是直接插入排序的优化，将待排的数据进行分组优化，每一组分别进行直接插入排序
+     * 时间复杂度最好：O(n)
+     * 时间复杂度最坏：O(n^1.3 - O(n^1.5))
+     * 空间复杂度：O(1)
+     * 稳定性：不稳定排序
+     * @param arr
+     * @param gap
+     */
+    private static void shell(int[] arr,int gap) {
+        for (int i = gap; i < arr.length; i++) {
+            int tmp = arr[i];
+            int j = 0;
+            for (j = i-gap; j >= 0 ; j-=gap) {
+                if (arr[j] > tmp) {
+                    arr[j+gap] = arr[j];
+                }else {
+                    break;
+                }
+            }
+            arr[j+gap] = tmp;
+        }
+    }
+    public static void shellSort(int[] arr) {
+        int[] drr = {5,3,1};
+        for (int i = 0; i < drr.length; i++) {
+            shell(arr,drr[i]);
+        }
+    }
     public static void main(String[] args) {
         int[] arr = {4,3,6,8,2,1,9,5,10,7};
         System.out.println(Arrays.toString(arr));
-        bubbleSort(arr);
+        shellSort(arr);
         System.out.println("===========================================");
         System.out.println(Arrays.toString(arr));
     }
