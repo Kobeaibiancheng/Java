@@ -90,5 +90,25 @@ class SingleList {
         }
     }
 
-
+    public ListNode reverse() {
+        if (this.head == null) {
+            return null;
+        }
+        //newHead表示反转后单链表新的头
+        ListNode newHead = null;
+        //prev表示将要反转的节点的前驱
+        ListNode prev = null;
+        //cur表示将要反转的节点
+        ListNode cur = this.head;
+        while (cur != null) {
+            ListNode curNext = cur.next;
+            if(curNext == null) {
+                newHead = cur;
+            }
+            cur.next = prev;
+            prev = cur;
+            cur = curNext;
+        }
+        return newHead;
+    }
 }
