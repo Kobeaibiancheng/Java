@@ -111,4 +111,17 @@ class SingleList {
         }
         return newHead;
     }
+
+    public boolean isCycle() {
+        ListNode slow = this.head;
+        ListNode fast = this.head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+  }
 }
