@@ -124,4 +124,14 @@ class SingleList {
         }
         return false;
   }
+
+    public ListNode middleNode() {
+        ListNode slow = this.head;
+        ListNode fast = this.head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
 }
