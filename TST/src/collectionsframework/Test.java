@@ -2,6 +2,25 @@ package collectionsframework;
 
 public class Test {
     public static void main(String[] args) {
+        MyCircularQueue myCircularQueue = new MyCircularQueue(5);
+        myCircularQueue.enQueue(5);
+        myCircularQueue.enQueue(4);
+        myCircularQueue.enQueue(2);
+        myCircularQueue.enQueue(1);
+        System.out.println(myCircularQueue.enQueue(6));
+        System.out.println(myCircularQueue.front());
+        System.out.println(myCircularQueue.Rear());
+
+
+        /*MyListQueue myListQueue = new MyListQueue();
+        myListQueue.offer(5);
+        myListQueue.offer(2);
+        myListQueue.offer(1);
+        myListQueue.offer(4);
+        myListQueue.offer(6);
+        System.out.println(myListQueue.peek());//5
+        System.out.println(myListQueue.poll());//5
+        System.out.println(myListQueue.peek());//2
         MyStack<Integer> myStack1 = new MyStack<>();
         myStack1.push(1);
         myStack1.push(2);
@@ -22,7 +41,7 @@ public class Test {
         myStack2.push("!!!");
         System.out.println(myStack2.pop());//!!!
         System.out.println(myStack2.peek());//world
-        /*MyArrayList<String> myArrayList1 = new MyArrayList<>();
+        MyArrayList<String> myArrayList1 = new MyArrayList<>();
         myArrayList1.add("hello");
         myArrayList1.add("world");
         myArrayList1.add("!!!");
