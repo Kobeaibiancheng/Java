@@ -1,8 +1,15 @@
 package collectionsframework;
-
 public class Test {
     public static void main(String[] args) {
-        MyCircularQueue myCircularQueue = new MyCircularQueue(5);
+
+        MySingleStack mySingleStack = new MySingleStack();
+        System.out.println(mySingleStack.push(10));
+        System.out.println(mySingleStack.push(20));
+        System.out.println(mySingleStack.push(30));
+        System.out.println(mySingleStack.peek());
+        System.out.println(mySingleStack.pop());
+        System.out.println(mySingleStack.peek());
+        /*MyCircularQueue myCircularQueue = new MyCircularQueue(5);
         myCircularQueue.enQueue(5);
         myCircularQueue.enQueue(4);
         myCircularQueue.enQueue(2);
@@ -12,7 +19,7 @@ public class Test {
         System.out.println(myCircularQueue.Rear());
 
 
-        /*MyListQueue myListQueue = new MyListQueue();
+        MyListQueue myListQueue = new MyListQueue();
         myListQueue.offer(5);
         myListQueue.offer(2);
         myListQueue.offer(1);
