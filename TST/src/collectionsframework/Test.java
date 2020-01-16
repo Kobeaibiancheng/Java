@@ -1,15 +1,24 @@
 package collectionsframework;
 public class Test {
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
-        MySingleStack mySingleStack = new MySingleStack();
+        BinaryTree binaryTree = new BinaryTree();
+        TreeNode root = binaryTree.createTree();
+        binaryTree.preOrderTraversal(root);
+        System.out.println();
+        binaryTree.inOrderTraversal(root);
+        System.out.println();
+        binaryTree.postOrderTraversal(root);
+        System.out.println(binaryTree.getSize(root));
+        System.out.println(binaryTree.getLeafSize(root));
+        /*MySingleStack mySingleStack = new MySingleStack();
         System.out.println(mySingleStack.push(10));
         System.out.println(mySingleStack.push(20));
         System.out.println(mySingleStack.push(30));
         System.out.println(mySingleStack.peek());
         System.out.println(mySingleStack.pop());
         System.out.println(mySingleStack.peek());
-        /*MyCircularQueue myCircularQueue = new MyCircularQueue(5);
+        MyCircularQueue myCircularQueue = new MyCircularQueue(5);
         myCircularQueue.enQueue(5);
         myCircularQueue.enQueue(4);
         myCircularQueue.enQueue(2);
