@@ -80,4 +80,56 @@ public class BinaryTree {
         return getLeafSize(root.left) + getLeafSize(root.right);
     }
 
+    //子问题思路 - 求第k层节点个数
+    public int getKLevelSize(TreeNode root,int k) {
+        if (root == null) {
+            return 0;
+        }
+        if (k == 1) {
+            return 1;
+        }
+        return getKLevelSize(root.left,k-1) + getKLevelSize(root.right,k-1);
+    }
+
+    //前序遍历查找value所在的节点
+    public TreeNode find(TreeNode root,int value) {
+        if (root == null) {
+            return null;
+        }
+        if (root.value == value) {
+            return root;
+        }
+        TreeNode ret = find(root.left, value);
+        if (ret != null) {
+            return ret;
+        }
+        ret = find(root.right, value);
+        if (ret != null) {
+            return ret;
+        }
+        return null;
+    }
+    //相同树
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if ((p == null && q != null) || (p != null && q == null)) {
+            return false;
+        }
+        if (p == null && q == null) {
+            return true;
+        }
+        if (p.value != q.value) {
+            return false;
+        }
+        return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+    }
+
+    //另一个树的子树
+    public boolean isSubTree(TreeNode s,TreeNode t) {
+        if (s == null || t == null) return false;
+        if (isSameTree(s,t)) return true;
+        if (isSubTree(s.left,t)) return true;
+        if (isSubTree(s.right,t)) return true;
+        return false;
+    }
+
 }
