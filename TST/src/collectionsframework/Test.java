@@ -28,7 +28,6 @@ public class Test {
                 System.out.println(myCircularQueue.enQueue(6));
                 System.out.println(myCircularQueue.front());
                 System.out.println(myCircularQueue.Rear());
-
                 MyListQueue myListQueue = new MyListQueue();
                 myListQueue.offer(5);
                 myListQueue.offer(2);
