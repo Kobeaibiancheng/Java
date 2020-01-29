@@ -1,6 +1,28 @@
 package string;
 
 public class TestDemo1 {
+
+    /**
+     * 长按键入
+     * @param name
+     * @param typed
+     * @return
+     */
+    public static boolean isLongPressedName(String name, String typed) {
+        int p1 = 0;
+        int p2 = 0;
+        while (p1 < name.length() && p2 < typed.length()) {
+            if (name.charAt(p1) == typed.charAt(p2)) {
+                p1++;
+                p2++;
+            }else if (p2 > 0 && typed.charAt(p2) == typed.charAt(p2-1)) {
+                p2++;
+            }else {
+                return false;
+            }
+        }
+        return p1 == name.length();
+    }
     //分割平衡字符串
     public static int balancedStringSplit(String str) {
         if(str == null || "".equals(str)) {
@@ -111,9 +133,11 @@ public class TestDemo1 {
     }*/
 
 
+
     public static void main(String[] args) {
-        char[] arr = {'a','b','b','b'};
-        /*String str = "abcdefacb";
+        System.out.println(isLongPressedName("abc","aabcc"));
+        /*char[] arr = {'a','b','b','b'};
+        String str = "abcdefacb";
         System.out.println(gatherString(str));
         String str = "aabbcdddeeef";//2a2b1c3d3e1f
         System.out.println(compress(str));
