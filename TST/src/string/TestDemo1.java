@@ -2,6 +2,14 @@ package string;
 
 public class TestDemo1 {
 
+    public static String reverseOnlyLetters(String S) {
+        //"a-bC-dEf-ghIj"
+        int p1 = 0;
+        int p2 = S.length()-1;
+        while () {
+            if (S.charAt(p1))
+        }
+    }
     /**
      * 长按键入
      * @param name
