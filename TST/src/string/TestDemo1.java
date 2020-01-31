@@ -2,13 +2,33 @@ package string;
 
 public class TestDemo1 {
 
+    //判断字符是否是字母字符
+
+    private static boolean isLetter(char c) {
+        return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+    }
     public static String reverseOnlyLetters(String S) {
         //"a-bC-dEf-ghIj"
+        char[] arr = S.toCharArray();
         int p1 = 0;
         int p2 = S.length()-1;
-        while () {
-            if (S.charAt(p1))
+        while (p1 <= p2) {
+            if (isLetter(arr[p1]) && isLetter(arr[p2])) {
+                char tmp = arr[p1];
+                arr[p1] = arr[p2];
+                arr[p2] = tmp;
+                p1++;
+                p2--;
+            }else {
+                if (!isLetter(arr[p1])) {
+                    p1++;
+                }
+                if (!isLetter(arr[p2])){
+                    p2--;
+                }
+            }
         }
+        return new String(arr);
     }
     /**
      * 长按键入
@@ -143,8 +163,10 @@ public class TestDemo1 {
 
 
     public static void main(String[] args) {
-        System.out.println(isLongPressedName("abc","aabcc"));
-        /*char[] arr = {'a','b','b','b'};
+        String str = "7_28]";
+        System.out.println(reverseOnlyLetters(str));
+        /*System.out.println(isLongPressedName("abc","aabcc"));
+        char[] arr = {'a','b','b','b'};
         String str = "abcdefacb";
         System.out.println(gatherString(str));
         String str = "aabbcdddeeef";//2a2b1c3d3e1f
