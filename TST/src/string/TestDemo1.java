@@ -1,13 +1,48 @@
 package string;
 
+import java.util.Stack;
+
 public class TestDemo1 {
 
-    //判断字符是否是字母字符
+    /**
+     * 反转字母
+     * 字符串先转化为数组，new一个StringBuffer
+     * 第一次遍历数组，将所有的字母入栈
+     * 第二次遍历数组如果是字母栈顶元素就出栈(所以出栈就等价于对字母反序操作)
+     * @param S
+     * @return
+     */
+    public static String reverseOnlyLetters(String S) {
+        Stack<Character> stack = new Stack<>();
 
+        for (char c : S.toCharArray()) {
+            if (isLetter(c)) {
+                stack.push(c);
+            }
+        }
+
+        StringBuffer stringBuffer = new StringBuffer();
+        for (char c : S.toCharArray()) {
+            if (isLetter(c)) {
+                stringBuffer.append(stack.pop());
+            }else {
+                stringBuffer.append(c);
+            }
+        }
+
+        return  stringBuffer.toString();
+    }
+
+    //判断字符是否是字母字符
     private static boolean isLetter(char c) {
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
     }
-    public static String reverseOnlyLetters(String S) {
+    /**
+     * 仅仅反转字母
+     * @param S
+     * @return
+     */
+    /*public static String reverseOnlyLetters1(String S) {
         //"a-bC-dEf-ghIj"
         char[] arr = S.toCharArray();
         int p1 = 0;
@@ -29,7 +64,7 @@ public class TestDemo1 {
             }
         }
         return new String(arr);
-    }
+    }*/
     /**
      * 长按键入
      * @param name
