@@ -3,7 +3,7 @@ package array;
 import java.util.Arrays;
 
 public class TestDemo1 {
-    /*public static int[] sortArrayByParity(int[] A) {
+    public static int[] sortArrayByParity(int[] A) {
         int i = 0;
         int j = A.length-1;
         //保证i下标位置存放的是偶数
@@ -22,26 +22,46 @@ public class TestDemo1 {
             }
         }
         return A;
-    }*/
+    }
 
-    //时间复杂度：O(n)
+    //时间复杂度：O(n) 遍历两边数组
     //空间复杂度;O(n)
-    public static int[] sortArrayByParity(int[] A) {
+    /*public static int[] sortArrayByParity(int[] A) {
         int[] ret = new int[A.length];
         int t = 0;
+        //第一次放入偶数
         for (int i = 0; i < A.length; i++) {
             if (A[i]%2 == 0) {
                 ret[t++] = A[i];
             }
         }
+        //第二次放入奇数
         for (int i = 0; i < A.length; i++) {
             if (A[i]%2 != 0) {
                 ret[t++] = A[i];
             }
         }
         return ret;
-    }
+    }*/
 
+
+    //时间复杂度：O(n)   双指针只遍历了一遍数组 一个指向数组头 另一个指向数组尾
+    //空间复杂度：O(n)
+    /*public static int[] sortArrayByParity(int[] A) {
+        int[] ret = new int[A.length];
+        int p1 = 0;
+        int p2 = A.length-1;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i]%2 == 0) {
+                ret[p1] = A[i];
+                p1++;
+            }else {
+                ret[p2] = A[i];
+                p2--;
+            }
+        }
+        return ret;
+    }*/
 
     /*public static int[] sortArrayByParity(int[] A) {
         for (int i = 0; i <  A.length; i++) {
