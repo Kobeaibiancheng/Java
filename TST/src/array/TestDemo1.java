@@ -3,6 +3,40 @@ package array;
 import java.util.Arrays;
 
 public class TestDemo1 {
+    public static int[] sortArrayByParity(int[] A) {
+        int i = 0;
+        int j = A.length-1;
+        //保证i下标位置存放的是偶数 
+        while (i < j) {
+            if (A[i]%2 > A[j]%2) {
+                int tmp = A[i];
+                A[i] = A[j];
+                A[j] = tmp;
+            }
+
+            if (A[i]%2 == 0) {
+                i++;
+            }
+            if (A[j]%2 == 1) {
+                j--;
+            }
+        }
+        return A;
+    }
+    /*public static int[] sortArrayByParity(int[] A) {
+        for (int i = 0; i <  A.length; i++) {
+            if (A[i]%2 == 0) {
+                int tmp = A[i];
+                for (int j = i-1; j >= 0; j--) {
+                    A[j+1] = A[j];
+                }
+                A[0] = tmp;
+            }
+        }
+        return A;
+    }*/
+
+
     /**
      * 将每一个元素平方后
      * 进行排序
@@ -58,7 +92,8 @@ public class TestDemo1 {
         return ret;
     }
     public static void main(String[] args) {
-        int[] arr = {-4,-3,0,1,2,5};
-        System.out.println(Arrays.toString(sortedSquares(arr)));
+        int[] arr = {3,1,2,4};
+        System.out.println(Arrays.toString(sortArrayByParity(arr)));
+        //System.out.println(Arrays.toString(sortedSquares(arr)));
     }
 }
