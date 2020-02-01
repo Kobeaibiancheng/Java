@@ -3,10 +3,10 @@ package array;
 import java.util.Arrays;
 
 public class TestDemo1 {
-    public static int[] sortArrayByParity(int[] A) {
+    /*public static int[] sortArrayByParity(int[] A) {
         int i = 0;
         int j = A.length-1;
-        //保证i下标位置存放的是偶数 
+        //保证i下标位置存放的是偶数
         while (i < j) {
             if (A[i]%2 > A[j]%2) {
                 int tmp = A[i];
@@ -22,7 +22,27 @@ public class TestDemo1 {
             }
         }
         return A;
+    }*/
+
+    //时间复杂度：O(n)
+    //空间复杂度;O(n)
+    public static int[] sortArrayByParity(int[] A) {
+        int[] ret = new int[A.length];
+        int t = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i]%2 == 0) {
+                ret[t++] = A[i];
+            }
+        }
+        for (int i = 0; i < A.length; i++) {
+            if (A[i]%2 != 0) {
+                ret[t++] = A[i];
+            }
+        }
+        return ret;
     }
+
+
     /*public static int[] sortArrayByParity(int[] A) {
         for (int i = 0; i <  A.length; i++) {
             if (A[i]%2 == 0) {
