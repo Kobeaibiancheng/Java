@@ -3,8 +3,12 @@ package array;
 
 public class TestDemo1 {
 
+    /**
+     * 数组表示一个非负整数   加一
+     * @param digits
+     * @return
+     */
     public static int[] plusOne(int[] digits) {
-
         for (int i = digits.length-1; i >= 0; i--) {
             digits[i]++;
             digits[i] = digits[i]%10;
