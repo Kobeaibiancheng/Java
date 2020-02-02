@@ -1,8 +1,30 @@
 package array;
 
-import java.util.Arrays;
 
 public class TestDemo1 {
+
+
+    /**
+     * 寻找数组的中心索引
+     * @param nums
+     * @return
+     */
+    public static int piovtIndex(int[] nums) {
+        int sum = 0;
+        int leftSum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (sum - nums[i] == leftSum * 2) {
+                return i;
+            }else {
+                leftSum += nums[i];
+            }
+        }
+        return -1;
+
+    }
     public static int[] sortArrayByParity(int[] A) {
         int i = 0;
         int j = A.length-1;
@@ -132,8 +154,8 @@ public class TestDemo1 {
         return ret;
     }
     public static void main(String[] args) {
-        int[] arr = {3,1,2,4};
-        System.out.println(Arrays.toString(sortArrayByParity(arr)));
+        int[] arr = {3,1,4,4};
+        System.out.println(piovtIndex(arr));
         //System.out.println(Arrays.toString(sortedSquares(arr)));
     }
 }
