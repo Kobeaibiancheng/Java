@@ -2,7 +2,41 @@ package array;
 
 
 public class TestDemo1 {
-
+    /**
+     * 第三大的数
+     * @param nums
+     * @return
+     */
+    public static int thirdMax(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        if (nums.length == 2) {
+            return nums[0] > nums[1] ? nums[0]:nums[1];
+        }
+        int firstMax = nums[0];
+        long secondMax = Long.MIN_VALUE;
+        long thirdMax = Long.MIN_VALUE;
+        for (int i = 1; i < nums.length; i++) {
+            if (firstMax == nums[i] || secondMax == nums[i] || thirdMax == nums[i]) {
+                continue;
+            }
+            if (nums[i] > firstMax) {
+                thirdMax = secondMax;
+                secondMax = firstMax;
+                firstMax = nums[i];
+            }else if (nums[i] > secondMax) {
+                thirdMax = secondMax;
+                secondMax = nums[i];
+            }else if (nums[i] > thirdMax) {
+                thirdMax = nums[i];
+            }
+        }
+        if (thirdMax == Long.MIN_VALUE){
+            return firstMax;
+        }
+        return (int)thirdMax;
+    }
     /**
      * 数组表示一个非负整数   加一
      * @param digits
@@ -172,7 +206,7 @@ public class TestDemo1 {
     }
     public static void main(String[] args) {
         int[] arr = {3,1,4,4};
-        System.out.println(piovtIndex(arr));
+        System.out.println(thirdMax(arr));
         //System.out.println(Arrays.toString(sortedSquares(arr)));
     }
 }
