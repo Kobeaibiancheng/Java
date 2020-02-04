@@ -5,6 +5,28 @@ import java.util.Stack;
 public class TestDemo1 {
 
     /**
+     * 二进制求和
+     * @param a
+     * @param b
+     * @return
+     */
+    public static String addBinary(String a, String b) {
+        StringBuffer stringBuffer = new StringBuffer();
+        int p1 = a.length()-1;
+        int p2 = b.length()-1;
+        int carry = 0;
+        while (p1 >= 0 || p2 >= 0) {
+            int sum = carry;
+            sum += (p1 >= 0 ? a.charAt(p1--) - '0' : 0);
+            sum += (p2 >= 0 ? b.charAt(p2--) - '0' : 0);
+            stringBuffer.append(sum%2);
+            carry = sum / 2;
+        }
+        stringBuffer.append(carry == 1 ? carry : "");
+        return stringBuffer.reverse().toString();
+    }
+
+    /**
      * 反转字母
      * 字符串先转化为数组，new一个StringBuffer
      * 第一次遍历数组，将所有的字母入栈
@@ -198,9 +220,10 @@ public class TestDemo1 {
 
 
     public static void main(String[] args) {
-        String str = "7_28]";
+        System.out.println(addBinary("1010","1011"));
+        /*String str = "7_28]";
         System.out.println(reverseOnlyLetters(str));
-        /*System.out.println(isLongPressedName("abc","aabcc"));
+        System.out.println(isLongPressedName("abc","aabcc"));
         char[] arr = {'a','b','b','b'};
         String str = "abcdefacb";
         System.out.println(gatherString(str));
