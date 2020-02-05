@@ -1,7 +1,34 @@
 package array;
 
 
+import java.util.Arrays;
+
 public class TestDemo1 {
+
+    /**
+     * 在排序数组中查找元素的第一个和最后一个位置
+     * @param nums
+     * @param target
+     * @return
+     */
+    //自己写的垃圾代码
+    public static int[] searchRange(int[] nums, int target) {
+        int i = 0;
+        int j = 0;
+        while (j < nums.length) {
+            if (nums[i] == target) {
+                j = i+1;
+                while (j < nums.length && nums[j] == target) {
+                    j++;
+                }
+                return new int[] {i,j-1};
+            }else {
+                i++;
+                j++;
+            }
+        }
+        return new int[] {-1,-1};
+    }
     /**
      * 两数之和
      * @param nums
@@ -221,8 +248,8 @@ public class TestDemo1 {
         return ret;
     }
     public static void main(String[] args) {
-        int[] arr = {3,1,4,4};
-        System.out.println(thirdMax(arr));
+        int[] arr = {2,2};
+        System.out.println(Arrays.toString(searchRange(arr,2)));
         //System.out.println(Arrays.toString(sortedSquares(arr)));
     }
 }
