@@ -4,6 +4,62 @@ package array;
 import java.util.Arrays;
 
 public class TestDemo1 {
+
+    /**
+     * 寻找左侧边界的二分搜索
+     * @param nums
+     * @param target
+     * @return
+     */
+    private static int left_bound(int[] nums, int target) {
+        if (nums.length == 0) return -1;
+        int left = 0;
+        int right = nums.length; // 注意
+
+        while (left < right) { // 注意
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                right = mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid; // 注意
+            }
+        }
+        // target 比所有数都大
+        if (left == nums.length) return -1;
+        // 类似之前算法的处理方式
+        return nums[left] == target ? left : -1;
+    }
+
+    /**
+     * 寻找右侧边界的二分搜索
+     * @param nums
+     * @param target
+     * @return
+     */
+    private static int right_bound(int[] nums, int target) {
+        if (nums.length == 0) return -1;
+        int left = 0, right = nums.length;
+
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                left = mid + 1; // 注意
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid;
+            }
+        }
+        if (left == 0) return -1;
+        return nums[left-1] == target ? (left-1) : -1;
+    }
+    public static int[] searchRange(int[] nums, int target) {
+        return new int[]{left_bound(nums,target),right_bound(nums,target)};
+    }
+
+
     private static int binarySearch(int[] nums,int target) {
         int left = 0;
         int right = nums.length-1;
@@ -13,7 +69,7 @@ public class TestDemo1 {
                 return mid;
             }else if (nums[mid] > target) {
                 right = mid - 1;
-            }else {
+            }else if (nums[mid] < target){
                 left = mid + 1;
             }
         }
@@ -27,7 +83,7 @@ public class TestDemo1 {
      * @param target
      * @return
      */
-    public static int[] searchRange(int[] nums, int target) {
+    /*public static int[] searchRange(int[] nums, int target) {
         int ret = binarySearch(nums,target);
         if (ret == -1) {
             return new int[]{-1,-1};
@@ -41,7 +97,10 @@ public class TestDemo1 {
             }
             return new int[]{i,ret};
         }
-    }
+    }*/
+
+
+
     /**
      * 在排序数组中查找元素的第一个和最后一个位置
      * @param nums
@@ -285,7 +344,7 @@ public class TestDemo1 {
         return ret;
     }
     public static void main(String[] args) {
-        int[] arr = {2,2};
+        int[] arr = {1,2,2};
         System.out.println(Arrays.toString(searchRange(arr,2)));
         //System.out.println(Arrays.toString(sortedSquares(arr)));
     }
