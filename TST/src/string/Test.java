@@ -17,7 +17,7 @@ public class Test {
                 left = mid + 1;
             }else if (arr[mid] > k) {
                 right = mid - 1;
-            }else {
+            }else if (arr[mid] == k){
                 return mid;
             }
         }
@@ -45,8 +45,67 @@ public class Test {
             return binarySearch(arr,key,mid+1,right);
         }
     }
+    /**
+     * 寻找左侧边界的二分搜索
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int left_bound(int[] nums, int target) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length; // 注意
+
+        while (left < right) { // 注意
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                right = mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid; // 注意
+            }
+        }
+        // target 比所有数都大
+        if (left == nums.length){
+            return -1;
+        }
+        // 类似之前算法的处理方式
+        return nums[left] == target ? left : -1;
+    }
+
+    /**
+     * 寻找右侧边界的二分搜索
+     * @param nums
+     * @param target
+     * @return
+     */
+    private static int right_bound(int[] nums, int target) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        int left = 0, right = nums.length;
+
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                left = mid + 1; // 注意
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid;
+            }
+        }
+        if (left == 0) {
+            return -1;
+        }
+        return nums[left-1] == target ? (left-1) : -1;
+    }
+
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5,6,7,8,9,10};
-        System.out.println(binarySearch(arr,0,0,arr.length-1));
+        System.out.println(binarySearch(arr,7,0,arr.length-1));
     }
 }
