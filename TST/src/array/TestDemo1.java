@@ -1,10 +1,29 @@
 package array;
 
 
-import java.util.Arrays;
-
 public class TestDemo1 {
 
+    public static int compress(char[] chars) {
+        int count = 1;
+        String str = new String(chars);
+        StringBuffer stringBuffer = new StringBuffer();
+        char ch = str.charAt(0);
+        /**
+         * 这里有问题
+         * 错误我吐了
+         */
+        for (int i = 1; i < str.length(); i++) {
+            if (ch == str.charAt(i)) {
+                count++;
+            }else {
+                stringBuffer.append(ch).append(count);
+                ch = str.charAt(i);
+                count = 1;
+            }
+        }
+        chars = stringBuffer.toString().toCharArray();
+        return chars.length;
+    }
     /**
      * 寻找左侧边界的二分搜索
      * @param nums
@@ -344,8 +363,10 @@ public class TestDemo1 {
         return ret;
     }
     public static void main(String[] args) {
-        int[] arr = {1,2,2};
-        System.out.println(Arrays.toString(searchRange(arr,2)));
+        char[] arr = {'a','a','b','c','c'};
+        System.out.println(compress(arr));
+        /*int[] arr = {1,2,2};
+        System.out.println(Arrays.toString(searchRange(arr,2)));*/
         //System.out.println(Arrays.toString(sortedSquares(arr)));
     }
 }
