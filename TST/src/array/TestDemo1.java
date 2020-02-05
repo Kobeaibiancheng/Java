@@ -4,7 +4,44 @@ package array;
 import java.util.Arrays;
 
 public class TestDemo1 {
+    private static int binarySearch(int[] nums,int target) {
+        int left = 0;
+        int right = nums.length-1;
+        while (left <= right) {
+            int mid = (left + right)/2;
+            if (nums[mid] == target) {
+                return mid;
+            }else if (nums[mid] > target) {
+                right = mid - 1;
+            }else {
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
 
+    /**
+     * 二分查找先找到target的下标，如果未找到直接返回-1
+     * 找到target的下标后前后依次遍历来确定区间
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] searchRange(int[] nums, int target) {
+        int ret = binarySearch(nums,target);
+        if (ret == -1) {
+            return new int[]{-1,-1};
+        }else {
+            int i = ret;
+            while (i > 0 && nums[i-1] == target) {
+                i--;
+            }
+            while (ret < nums.length-1 && nums[ret+1] == target) {
+                ret++;
+            }
+            return new int[]{i,ret};
+        }
+    }
     /**
      * 在排序数组中查找元素的第一个和最后一个位置
      * @param nums
@@ -12,7 +49,7 @@ public class TestDemo1 {
      * @return
      */
     //自己写的垃圾代码
-    public static int[] searchRange(int[] nums, int target) {
+   /* public static int[] searchRange(int[] nums, int target) {
         int i = 0;
         int j = 0;
         while (j < nums.length) {
@@ -28,7 +65,7 @@ public class TestDemo1 {
             }
         }
         return new int[] {-1,-1};
-    }
+    }*/
     /**
      * 两数之和
      * @param nums
