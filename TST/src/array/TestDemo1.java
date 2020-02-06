@@ -3,26 +3,27 @@ package array;
 
 public class TestDemo1 {
 
+    /**
+     * 压缩字符串
+     * @param chars
+     * @return
+     */
     public static int compress(char[] chars) {
-        int count = 1;
-        String str = new String(chars);
-        StringBuffer stringBuffer = new StringBuffer();
-        char ch = str.charAt(0);
-        /**
-         * 这里有问题
-         * 错误我吐了
-         */
-        for (int i = 1; i < str.length(); i++) {
-            if (ch == str.charAt(i)) {
-                count++;
-            }else {
-                stringBuffer.append(ch).append(count);
-                ch = str.charAt(i);
-                count = 1;
+        int write = 0;
+        int anchor = 0;
+        for (int read = 0; read < chars.length; read++) {
+            if (read + 1 == chars.length || chars[read + 1] != chars[read]) {
+                chars[write++] = chars[anchor];
+                if (read > anchor) {
+                    for (char c : ("" + (read - anchor + 1)).toCharArray()) {
+                        chars[write++] = c;
+                    }
+                }
+                anchor = read + 1;
             }
         }
-        chars = stringBuffer.toString().toCharArray();
-        return chars.length;
+        return write;
+
     }
     /**
      * 寻找左侧边界的二分搜索
