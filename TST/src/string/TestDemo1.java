@@ -217,11 +217,30 @@ public class TestDemo1 {
         return str.toString().toCharArray().length;
     }*/
 
+    /**
+     * 验证回文串
+     * 只考虑字母和数字字符，可以忽略大小写
+     * @param s
+     * @return
+     */
+    public static boolean isPalindrome(String s) {
+        if (s == null) return true;
+        s = s.toLowerCase();
+        int l = s.length();
+        StringBuilder str = new StringBuilder(l);
+        for (char c : s.toCharArray()) {
+            if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')) {
+                str.append(c);
+            }
+        }
+        return str.toString().equals(str.reverse().toString());
+    }
 
 
     public static void main(String[] args) {
-        System.out.println(addBinary("1010","1011"));
-        /*String str = "7_28]";
+        System.out.println(isPalindrome("A man, a plan, a canal: Panama"));
+        /*System.out.println(addBinary("1010","1011"));
+        String str = "7_28]";
         System.out.println(reverseOnlyLetters(str));
         System.out.println(isLongPressedName("abc","aabcc"));
         char[] arr = {'a','b','b','b'};
