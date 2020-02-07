@@ -237,6 +237,52 @@ public class TestDemo1 {
     }
 
 
+    /**
+     * 字符串转整数
+     * @param str
+     * @return
+     */
+    public static int myAtoi(String str) {
+        //判断空格
+        if(str == null) {
+            return 0;
+        }
+        str = str.trim();
+        if(str.length() == 0) {
+            return 0;
+        }
+        //判断正负
+        int flg = 1;
+        int i = 0;
+        if(str.charAt(i) == '-') {
+            flg = -1;
+            i++;
+        }else if(str.charAt(i) == '+') {
+            i++;
+        }
+
+        //得到数字
+        int ret = 0;
+        for(; i < str.length(); i++) {
+            //处理其他非数字
+            if(str.charAt(i) < '0' || str.charAt(i) > '9') {
+                return ret*flg;
+            }
+            //处理极限值
+            if(flg == 1 && ret > Integer.MAX_VALUE/10 ||
+                    (flg == 1 && ret == Integer.MAX_VALUE/10 && str.charAt(i) > '7')) {
+                return Integer.MAX_VALUE;
+            }
+            if(flg == -1 && ret > Integer.MAX_VALUE/10 ||
+                    (flg == -1 && ret == Integer.MAX_VALUE/10 && str.charAt(i) > '7')) {
+                return Integer.MIN_VALUE;
+            } else {
+                ret = ret*10 + str.charAt(i) - '0';
+            }
+        }
+        return ret * flg;
+    }
+    
     public static void main(String[] args) {
         System.out.println(isPalindrome("A man, a plan, a canal: Panama"));
         /*System.out.println(addBinary("1010","1011"));
