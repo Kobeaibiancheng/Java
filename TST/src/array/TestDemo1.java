@@ -1,6 +1,8 @@
 package array;
 
 
+import java.util.Arrays;
+
 public class TestDemo1 {
 
     /**
@@ -362,6 +364,19 @@ public class TestDemo1 {
             p2--;
         }
         return ret;
+    }
+    public static int findUnsortedSubarray(int[] nums) {
+        int[] nums_sort = nums.clone();
+        Arrays.sort(nums_sort);
+        int start = nums_sort.length;
+        int end = 0;
+        for (int i = 0; i < nums_sort.length; i++) {
+            if (nums_sort[i] != nums[i]) {
+                start = Math.min(start,i);
+                end = Math.max(end,i);
+            }
+        }
+        return (end - start >= 0 ? end - start + 1 : 0);
     }
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
