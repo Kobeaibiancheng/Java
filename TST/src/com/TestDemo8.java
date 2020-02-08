@@ -1,6 +1,8 @@
+package com;
+
 class MyExpection extends Exception {
     private String str;
-    public MyExpection(String str) {
+    public MyExpection (String str) {
         super();
         this.str = str;
     }
@@ -8,13 +10,7 @@ class MyExpection extends Exception {
         System.out.println(this.str);
     }
 }
-class Person {
-    private String name;
 
-    public void study() {
-        System.out.println("study");
-    }
-}
 public class TestDemo8 {
     public static void main(String[] args) {
         int a = 10;
