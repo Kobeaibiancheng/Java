@@ -24,6 +24,9 @@ class Person implements Cloneable{
         this.m = new Money();
     }
 
+    public void study() {
+        System.out.println("study");
+    }
     @Override
     protected Object clone() throws CloneNotSupportedException {
         Person per = (Person)super.clone();
