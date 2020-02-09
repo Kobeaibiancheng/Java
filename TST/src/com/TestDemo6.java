@@ -18,10 +18,21 @@ class Money implements Cloneable{
 }
 class Person implements Cloneable{
     public String name;
+    public int age;
     public Money m;
-    public Person(String name) {
+    public Person(String name,int age) {
         this.name = name;
         this.m = new Money();
+        this.age = age;
+        try {
+            if (this.age < 0 || this.age > 200) {
+                throw new NoAgeException("年龄值非法");
+            }
+        }catch (NoAgeException e) {
+            System.out.println(e.toString());
+            e.printStackTrace();
+        }
+
     }
 
     public void study() {
@@ -34,9 +45,23 @@ class Person implements Cloneable{
         return per;
     }
 }
+//自定义异常类
+class NoAgeException extends Exception {
+    public NoAgeException() {
+
+    }
+    public NoAgeException(String s) {
+        super(s);
+    }
+}
 class TestDome6 {
     public static void main(String[] args) throws CloneNotSupportedException{
-        Person person1 = new Person("zhangsan");
+        Person person = new Person("李四",-1);
+
+
+
+
+        Person person1 = new Person("zhangsan",20);
         System.out.println(person1.m.money);
         Person person2 = (Person)person1.clone();
         person2.m.money = 99;
