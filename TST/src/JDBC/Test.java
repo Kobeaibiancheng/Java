@@ -1,9 +1,9 @@
 package JDBC;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+
+import javax.sql.DataSource;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Test {
@@ -19,6 +19,7 @@ public class Test {
         System.out.println("===============");
     }
 
+    //注册用户
     private static void register() throws SQLException {
         // 需要用户名输入用户名 + 密码
         Scanner scanner = new Scanner(System.in);
@@ -56,6 +57,43 @@ public class Test {
     private static final String mysqlUsername = "root";
     private static final String mysqlPassword = "";
 
+    //登陆用户
+    private static void login() throws SQLException {
+        //需要用户 输入用户名 + 密码
+        Scanner scanner = new Scanner(System.in);
+        String username = scanner.nextLine();
+        String password = scanner.nextLine();
+
+        MysqlDataSource mysqlDataSource = new MysqlDataSource();
+        mysqlDataSource.setServerName("127.0.0.1");
+        mysqlDataSource.setPort(3306);
+        mysqlDataSource.setUser("root");
+        mysqlDataSource.setPassword("");
+        mysqlDataSource.setDatabaseName("project");
+        mysqlDataSource.setUseSSL(false);
+        mysqlDataSource.setCharacterEncoding("utf8");
+        DataSource dataSource = mysqlDataSource;
+
+        try(Connection c = dataSource.getConnection()) {
+            try(Connection con = DriverManager.getConnection(url, mysqlUsername, mysqlPassword)) {
+                try(Statement statement = c.createStatement()) {
+                    String sql = String.format("SELECT id, username FROM users WHERE username = '%s' AND password = '%s'",
+                            username, password
+                    );
+                    System.out.println(sql);
+                    try(ResultSet resultSet = statement.executeQuery(sql)) {
+                        if (!resultSet.next()) {
+                            System.out.println("登陆失败");
+                        }else {
+                            int id = resultSet.getInt("id");
+                            String usernameIntable = resultSet.getString("username");
+                            System.out.println("登陆成功: " + id + ", " + usernameIntable);
+                        }
+                    }
+                }
+            }
+        }
+    }
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
 
@@ -69,6 +107,9 @@ public class Test {
             switch(select) {
                 case 1:
                     register();
+                    break;
+                case 2:
+                    login();
                     break;
             }
         }
