@@ -7,8 +7,8 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Test {
-    /*private static int globalUserId = -1;
-    private static String gloablUsername = null;*/
+    private static int globalUserId = -1;
+    private static String globalUsername = null;
     private static void menu() {
         System.out.println("===============");
         System.out.println("1.用户注册");
@@ -17,6 +17,41 @@ public class Test {
         System.out.println("4.文章列表页");
         System.out.println("5.文章详情页");
         System.out.println("===============");
+    }
+
+    //发表文章
+    private static void publish() throws SQLException {
+        if (globalUserId == -1) {
+            System.out.println("请先登录");
+            return;
+        }
+        Scanner scanner = new Scanner(System.in);
+        String title = scanner.nextLine();
+        String content = scanner.nextLine();
+
+        MysqlDataSource mysqlDataSource = new MysqlDataSource();
+        mysqlDataSource.setServerName("127.0.0.1");
+        mysqlDataSource.setPort(3306);
+        mysqlDataSource.setUser("root");
+        mysqlDataSource.setPassword("");
+        mysqlDataSource.setDatabaseName("project");
+        mysqlDataSource.setUseSSL(false);
+        mysqlDataSource.setCharacterEncoding("utf8");
+        DataSource dataSource = mysqlDataSource;
+
+
+        String sql = "INSERT INTO articles (author_id,title,content) VALUES (?, ?, ?)";
+        try(Connection con = dataSource.getConnection()){
+            try(PreparedStatement statement = con.prepareStatement(sql)) {
+                statement.setInt(1,globalUserId);
+                statement.setString(2,title);
+                statement.setString(3,content);
+
+                statement.executeUpdate();
+
+                System.out.println("发表成功");
+            }
+        }
     }
 
     //注册用户
@@ -75,7 +110,7 @@ public class Test {
         DataSource dataSource = mysqlDataSource;
 
         try(Connection c = dataSource.getConnection()) {
-            try(Connection con = DriverManager.getConnection(url, mysqlUsername, mysqlPassword)) {
+            /*try(Connection con = DriverManager.getConnection(url, mysqlUsername, mysqlPassword)) {
                 try(Statement statement = c.createStatement()) {
                     String sql = String.format("SELECT id, username FROM users WHERE username = '%s' AND password = '%s'",
                             username, password
@@ -86,9 +121,43 @@ public class Test {
                             System.out.println("登陆失败");
                         }else {
                             int id = resultSet.getInt("id");
-                            String usernameIntable = resultSet.getString("username");
-                            System.out.println("登陆成功: " + id + ", " + usernameIntable);
+                            String usernameInTable = resultSet.getString("username");
+                            globalUserId = id;
+                            globalUsername = usernameInTable;
+                            System.out.println("登陆成功: " + id + ", " + usernameInTable);
                         }
+                    }
+                }
+            }*/
+
+
+            //  ?  占位符
+            String sql = "SELECT id, username FROM users WHERE username = ? AND password = ?";
+            try(PreparedStatement statement = c.prepareStatement(sql)) {
+                //类似  ResultSet
+                //1.各种各样的类型
+                //2.下标从 1 开始
+
+                statement.setString(1,username);
+                statement.setString(2,password);
+                // MySQL Driver 时打印 SQL 的小技巧
+                // JDBC 规定中，PrepareStatement 是无法打印填充完占位符后的 SQL
+                // PrepareStatement 的实现类 com.mysql.jdbc.PreparedStatement
+                // 有个方法 asSql 干这个事情的
+                // 利用向下转型完成
+
+                com.mysql.jdbc.PreparedStatement mysqlStatement = (com.mysql.jdbc.PreparedStatement)statement;
+                System.out.println(mysqlStatement.asSql());
+
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (!resultSet.next()) {
+                        System.out.println("登录失败");
+                    } else {
+                        int id = resultSet.getInt("id");
+                        String usernameInTable = resultSet.getString("username");
+                        globalUserId = id;
+                        globalUsername = usernameInTable;
+                        System.out.println("登录成功: " + id + ", " + usernameInTable);
                     }
                 }
             }
@@ -110,6 +179,9 @@ public class Test {
                     break;
                 case 2:
                     login();
+                    break;
+                case 3:
+                    publish();
                     break;
             }
         }
