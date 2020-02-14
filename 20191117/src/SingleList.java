@@ -63,5 +63,24 @@ class SingleList {
         return newHead;
     }
 
+	//求倒数第k个节点，让fast先走k-1步
+	public ListNode findKthToTail(int k) {
+		ListNode slow = this.head;
+		ListNode fast = this.head;
+		for(int i = 0; i < k-1;i++) {
+			if(fast.next != null) {
+				fast = fast.next;
+			}
+			else{
+				return null;
+			}
+		}
+		
+		while(fast.next != null){
+			fast = fast.next;
+			slow = slow.next;
+		}
+		return slow;
+	}
 
 }
