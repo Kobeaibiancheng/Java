@@ -378,6 +378,12 @@ public class TestDemo1 {
         }
         return (end - start >= 0 ? end - start + 1 : 0);
     }
+
+    /*public static List<List<Integer>> subsets(int[] nums) {
+        String name = "1";
+        AbstractList
+        ArrayList
+    }*/
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
