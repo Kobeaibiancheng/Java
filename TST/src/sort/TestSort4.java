@@ -73,7 +73,7 @@ public class TestSort4 {
         Student[] students = {student1,student2,student3};*/
         ComparatorByAge comparatorByAge = new ComparatorByAge();
         ComparatorByName comparatorByName = new ComparatorByName();
-        Arrays.sort(students,comparatorByName);
+        Arrays.sort(students);
         System.out.println(Arrays.toString(students));
     }
 }
