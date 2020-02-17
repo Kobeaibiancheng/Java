@@ -51,10 +51,10 @@ public class TestSort2 {
     public static void quick(int[] arr,int low,int high) {
         if(low < high) {
             //优化
-            if (high-low+1 < 100) {
-                //insertSort(arr,low,high);
+            /*if (high-low+1 < 100) {
+                //insertSort(arr,low,high);待排数据越少，直接插入排序效率越高
                 return;
-            }
+            }*/
             //1.将待排序列分为两部分
             int pivot = partion(arr,low,high);
             //2.递归，左，右
