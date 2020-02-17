@@ -86,7 +86,8 @@ public class Test {
         if (nums.length == 0) {
             return -1;
         }
-        int left = 0, right = nums.length;
+        int left = 0;
+        int right = nums.length;
 
         while (left < right) {
             int mid = (left + right) / 2;
@@ -105,7 +106,7 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5,6,7,8,9,10};
-        System.out.println(binarySearch(arr,7,0,arr.length-1));
+        int[] arr = {1,2,3,4,7,7,7,8,9,10};
+        System.out.println(left_bound(arr,7));
     }
 }
