@@ -4,6 +4,8 @@ package com;
 
 public class TextDemo {
     public static void main(String[] args) {
+
+
         //向上转型
         Animal animal = new Cat("小白", 2);
 /*        System.out.println(((Cat) animal).age);
