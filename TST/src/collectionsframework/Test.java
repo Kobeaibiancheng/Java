@@ -3,7 +3,17 @@ package collectionsframework;
 public class Test {
 
         public static void main(String[] args) {
-                BinaryTree binaryTree = new BinaryTree();
+
+                MyListStack<Integer> myListStack = new MyListStack<>();
+                myListStack.push(3);
+                myListStack.push(2);
+                myListStack.push(1);
+
+                System.out.println(myListStack.peek());
+                System.out.println(myListStack.size());
+                myListStack.pop();
+                System.out.println(myListStack.size());
+                /*BinaryTree binaryTree = new BinaryTree();
                 TreeNode root = binaryTree.createTree();
                 binaryTree.preOrderTraversal(root);
                 System.out.println();
@@ -66,7 +76,7 @@ public class Test {
                 myArrayList2.add(1);
                 myArrayList2.add(2);
                 myArrayList2.add(3);
-                System.out.println(myArrayList2.get());
+                System.out.println(myArrayList2.get());*/
                 //MyArrayList<int> myArrayList3 = new MyArrayList<>();  错误的*/
     }
 }
