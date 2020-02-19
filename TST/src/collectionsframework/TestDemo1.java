@@ -4,6 +4,22 @@ import java.util.*;
 
 public class TestDemo1 {
     public static void main(String[] args) {
+
+        Set<String> set = new HashSet<>();
+
+        set.add("I");
+        set.add("miss");
+        set.add("you");
+        set.add("kobe");
+        System.out.println(set);
+
+        //迭代器->只要实现了iterable接口
+        Iterator<String> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+
+
         //Collection接口
         /*Collection<String> collection = new ArrayList<>();
         collection.add("java");
@@ -16,7 +32,7 @@ public class TestDemo1 {
         Object[] strings = collection.toArray();
         System.out.println(Arrays.toString(strings));*/
 
-        Collection<String> list = new ArrayList<>();
+        /*Collection<String> list = new ArrayList<>();
         list.add("I");
         list.add(" miss");
         list.add(" you");
@@ -33,7 +49,7 @@ public class TestDemo1 {
         System.out.println(Arrays.toString(myWords));
         System.out.println(list);
         list.clear();
-        System.out.println(list);
+        System.out.println(list);*/
         /*false
         5
         true
@@ -44,7 +60,7 @@ public class TestDemo1 {
             System.out.println(s);
         }*/
 
-        Map<String,String> map = new HashMap<>();
+        /*Map<String,String> map = new HashMap<>();
         map.put("Kobe","basketball");
         map.put("Gigi","daught");
         System.out.println(map.size());
@@ -56,10 +72,11 @@ public class TestDemo1 {
         for (Map.Entry<String,String> entry : map.entrySet()) {
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());
-        }
+        }*/
 
         /**
-         * map接口
+         * Map:底层是一个哈希表
+         * <key,v>  key 不能相同  ，v 可以相同
          * <>指定数据类型是什么
          */
         /*Map<String,String> map = new HashMap<>();
