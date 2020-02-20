@@ -3,6 +3,46 @@ package collectionsframework;
 import java.util.*;
 
 public class TestDemo1 {
+
+    //宝石和石头
+    public static int numJewelsInStones(String J, String S) {
+        Set<Character> set = new HashSet<>();
+        for(int i = 0;i < J.length();i++) {
+            set.add(J.charAt(i));
+        }
+        int count = 0;
+        for(int i = 0;i < S.length();i++) {
+            if(set.contains(S.charAt(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+
+    //复制带随机指针的链表
+    public static Node copyRandomList(Node head) {
+        Map<Node,Node> map = new HashMap<>();
+        Node cur = head;
+        while(cur != null) {
+            Node node = new Node(cur.data);
+            map.put(cur,node);
+            cur = cur.next;
+        }
+
+        cur = head;
+
+        while(cur != null) {
+            map.get(cur).next = map.get(cur.next);
+            map.get(cur).random = map.get(cur.random);
+            cur = cur.next;
+        }
+
+        return map.get(head);
+    }
+
+
     public static void main(String[] args) {
 
         Set<String> set = new HashSet<>();
