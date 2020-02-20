@@ -1,5 +1,8 @@
 package string;
 
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 import java.util.Stack;
 
 public class TestDemo1 {
@@ -281,6 +284,43 @@ public class TestDemo1 {
             }
         }
         return ret * flg;
+    }
+
+    //宝石和石头
+    public static int numJewelsInStones(String J, String S) {
+        Set<Character> set = new HashSet<>();
+        for(int i = 0;i < J.length();i++) {
+            set.add(J.charAt(i));
+        }
+        int count = 0;
+        for(int i = 0;i < S.length();i++) {
+            if(set.contains(S.charAt(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    //坏掉的键盘（牛客网）    Set集合
+    public static void broken() {
+        Scanner scan = new Scanner(System.in);
+        String str1 = scan.nextLine();//预期输入的
+        String str2 = scan.nextLine();//实际输入的
+        Set<Character> set = new HashSet<>();
+        //将实际输入的字符放入集合Set中
+        for(char ch : str2.toUpperCase().toCharArray()) {
+            set.add(ch);
+        }
+
+
+        Set<Character> broken = new HashSet<>();
+        //遍历预期输入的字符串，如何set不包含，就代表是坏掉的键盘
+        for(char ch : str1.toUpperCase().toCharArray()) {
+            if(!set.contains(ch) && !broken.contains(ch)) {
+                broken.add(ch);
+                System.out.print(ch);
+            }
+        }
     }
 
     public static void main(String[] args) {
