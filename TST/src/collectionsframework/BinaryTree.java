@@ -1,5 +1,10 @@
 package collectionsframework;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 class TreeNode {
     public char value;
     public TreeNode left;
@@ -56,6 +61,36 @@ public class BinaryTree {
         postOrderTraversal(root.left);
         postOrderTraversal(root.right);
         System.out.print(root.value + " ");
+    }
+
+
+    //二叉树层序遍历
+    public List<List<Character>> levelOrder(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        List<List<Character>> ret = new ArrayList<>();
+        //List<Integer> list = new ArrayList<>();
+
+        if (root != null) {
+            queue.offer(root);
+        }
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Character> list = new ArrayList<>();
+            while (size > 0) {
+                TreeNode cur = queue.poll();
+                //assert cur != null;
+                list.add(cur.value);
+                size--;
+                if (cur.left != null) {
+                    queue.offer(cur.left);
+                }
+                if (cur.right != null) {
+                    queue.offer(cur.right);
+                }
+            }
+            ret.add(list);
+        }
+        return ret;
     }
 
     /**
