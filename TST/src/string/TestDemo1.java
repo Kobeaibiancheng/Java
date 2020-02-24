@@ -323,13 +323,23 @@ public class TestDemo1 {
         }
     }
 
+    public static void fun() {
+        Scanner scanner = new Scanner(System.in);
+        Set<String> set = new HashSet<>();
+        while (scanner.hasNext()) {
+            String str = scanner.next();
+            set.add(str);
+        }
+        System.out.println(set.size());
+    }
+
     public static void main(String[] args) {
-        //String str1 = new String("hello");
+        /*//String str1 = new String("hello");
         String str2 = new String("hello");
         String str1 = "hello";
         //String str2 = "hello";
-        System.out.println(str1 == str2);
-
+        System.out.println(str1 == str2);*/
+        fun();
         /*System.out.println(isPalindrome("A man, a plan, a canal: Panama"));
         System.out.println(addBinary("1010","1011"));
         String str = "7_28]";
