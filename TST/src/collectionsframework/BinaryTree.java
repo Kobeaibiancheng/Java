@@ -1,9 +1,6 @@
 package collectionsframework;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 class TreeNode {
     public char value;
@@ -64,6 +61,131 @@ public class BinaryTree {
     }
 
 
+    //迭代前序遍历二叉树
+    public List<Character> preOrderTraversalNor(TreeNode root) {
+        List<Character> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                list.add(cur.value);
+                //System.out.print(cur.value + " ");
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            cur = cur.right;
+        }
+        return list;
+    }
+    /*public void preOrderTraversalNor(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                System.out.print(cur.value + " ");
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            cur = cur.right;
+
+        }
+    }*/
+
+
+    //迭代中序遍历二叉树
+    public List<Character> inOrderTraversalNor(TreeNode root) {
+        List<Character> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            list.add(cur.value);
+            //System.out.print(cur.value + " ");
+            cur = cur.right;
+        }
+        return list;
+    }
+    /*public void inOrderTraversalNor(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            System.out.print(cur.value + " ");
+            cur = cur.right;
+        }
+    }*/
+
+
+    //迭代后序遍历二叉树
+    public List<Character> postOrderTraversalNor(TreeNode root) {
+        List<Character> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        TreeNode prev = null;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            cur = stack.peek();
+            if (cur.right == null || cur.right == prev) {
+                stack.pop();
+                list.add(cur.value);
+                prev = cur;
+                cur = null;
+            }else {
+                cur = cur.right;
+            }
+        }
+        return list;
+    }
+    /*public void postOrderTraversalNor(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        TreeNode prev = null;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            cur = stack.peek();
+            if (cur.right == null || cur.right == prev) {
+                stack.pop();
+                System.out.print(cur.value + " ");
+                prev = cur;
+                cur = null;
+            }else {
+                cur = cur.right;
+            }
+        }
+    }*/
+
+    /*public void levelOrder(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root != null) {
+            queue.offer(root);
+        }
+        while (!queue.isEmpty()) {
+            TreeNode cur = queue.poll();
+            System.out.print(cur.value + " ");
+            if (cur.left != null) {
+                queue.offer(cur.left);
+            }
+            if (cur.right != null) {
+                queue.offer(cur.right);
+            }
+        }
+    }*/
     //二叉树层序遍历
     public List<List<Character>> levelOrder(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
@@ -167,4 +289,38 @@ public class BinaryTree {
         return false;
     }
 
+
+    /*private static boolean isSymmetricChild(TreeNode leftTree,TreeNode rightTree) {
+        if (leftTree == null && rightTree == null) {
+            return true;
+        }else if (leftTree == null) {
+            return false;
+        }else if (rightTree == null) {
+            return false;
+        }else {
+            if (leftTree.value == rightTree.value) {
+                return isSymmetricChild(leftTree.left,rightTree.right)
+                        && isSymmetricChild(leftTree.right,rightTree.left);
+            }else {
+                return false;
+            }
+        }
+    }*/
+    private static boolean isSymmetricChild(TreeNode leftTree,TreeNode rightTree) {
+        if (leftTree == null && rightTree == null) {
+            return true;
+        }
+        if (leftTree == null && rightTree != null || leftTree != null && rightTree == null) {
+            return false;
+        }
+        return leftTree.value == rightTree.value && isSymmetricChild(leftTree.left,rightTree.right)
+                && isSymmetricChild(leftTree.right,rightTree.left);
+    }
+    //对称二叉树
+    public static boolean isSymmetric(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        return isSymmetricChild(root.left,root.right);
+    }
 }
