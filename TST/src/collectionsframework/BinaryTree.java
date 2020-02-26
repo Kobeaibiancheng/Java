@@ -290,7 +290,7 @@ public class BinaryTree {
     }
 
 
-    /*private static boolean isSymmetricChild(TreeNode leftTree,TreeNode rightTree) {
+    /*private boolean isSymmetricChild(TreeNode leftTree,TreeNode rightTree) {
         if (leftTree == null && rightTree == null) {
             return true;
         }else if (leftTree == null) {
@@ -306,7 +306,7 @@ public class BinaryTree {
             }
         }
     }*/
-    private static boolean isSymmetricChild(TreeNode leftTree,TreeNode rightTree) {
+    private boolean isSymmetricChild(TreeNode leftTree,TreeNode rightTree) {
         if (leftTree == null && rightTree == null) {
             return true;
         }
@@ -317,10 +317,39 @@ public class BinaryTree {
                 && isSymmetricChild(leftTree.right,rightTree.left);
     }
     //对称二叉树
-    public static boolean isSymmetric(TreeNode root) {
+    public boolean isSymmetric(TreeNode root) {
         if (root == null) {
             return true;
         }
         return isSymmetricChild(root.left,root.right);
     }
+
+
+    //判断一棵树是不是完全二叉树
+    public boolean isCompleteTree(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        if (root != null) {
+            queue.offer(root);
+        }
+
+        while (!queue.isEmpty()) {
+            TreeNode cur = queue.poll();
+            if (cur != null) {
+                queue.offer(cur.left);
+                queue.offer(cur.right);
+            }else {
+                break;
+            }
+        }
+        while (!queue.isEmpty()){
+            TreeNode cur = queue.poll();
+            if (cur != null) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
 }
