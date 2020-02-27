@@ -352,4 +352,22 @@ public class BinaryTree {
 
     }
 
+
+    //二叉树的构建和前序遍历
+    public int i = 0;
+    public TreeNode createTree(String str) {
+        TreeNode root = null;
+        if (str.charAt(i) != '#') {
+            root = new TreeNode(str.charAt(i));
+            i++;
+            root.left = createTree(str);
+            root.right = createTree(str);
+        }else {
+            i++;
+        }
+        return root;
+    }
+
+    
+
 }
