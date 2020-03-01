@@ -31,6 +31,7 @@ public class TestDemo1 {
             System.out.println(sum());
         }
     }
+	
     static void 多线程() throws InterruptedException {
         long b = System.nanoTime();
         // 因为当前处于一个线程中，所以只需要创建 COUNT - 1个线程就够了
