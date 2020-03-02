@@ -333,13 +333,45 @@ public class TestDemo1 {
         System.out.println(set.size());
     }
 
+
+
+    private static boolean isPalindrome(StringBuffer str1) {
+        StringBuffer stringBuffer = new StringBuffer(str1);
+
+        if (stringBuffer.toString().equals(str1.reverse().toString())){
+            return true;
+        }
+        return false;
+
+    }
+
+    /**
+     * 统计回文
+     * @return
+     */
+    public static int statisticalPalindromes() {
+        Scanner scanner = new Scanner(System.in);
+
+        String str = scanner.nextLine();
+
+        String str2 = scanner.nextLine();
+        int count = 0;
+        for(int i = 0; i <= str.length(); i++) {
+            StringBuffer str1 = new StringBuffer(str);
+            if(isPalindrome(str1.insert(i,str2))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         /*//String str1 = new String("hello");
         String str2 = new String("hello");
         String str1 = "hello";
         //String str2 = "hello";
         System.out.println(str1 == str2);*/
-        fun();
+        //fun();
         /*System.out.println(isPalindrome("A man, a plan, a canal: Panama"));
         System.out.println(addBinary("1010","1011"));
         String str = "7_28]";
@@ -353,5 +385,7 @@ public class TestDemo1 {
         StringBuilder src = null;
          String str = "LLRRLRLR";
         System.out.println(balancedStringSplit(str));*/
+
     }
+
 }
