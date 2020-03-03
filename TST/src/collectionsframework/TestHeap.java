@@ -1,10 +1,5 @@
 package collectionsframework;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 /**
  * 堆
  * 优先级队列
@@ -40,7 +35,7 @@ public class TestHeap {
 
 
     public static void main(String[] args) {
-        Map<String,Integer> map = new HashMap<>();
+        /*Map<String,Integer> map = new HashMap<>();
         map.put("kobe",2);
         map.put("kobe",2);
         map.put("kobe",2);
@@ -53,7 +48,7 @@ public class TestHeap {
         for (Map.Entry<String,Integer> entry : map.entrySet()) {
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());
-        }
+        }*/
     }
 
 }
