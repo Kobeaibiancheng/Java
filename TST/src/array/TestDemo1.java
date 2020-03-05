@@ -384,6 +384,10 @@ public class TestDemo1 {
         AbstractList
         ArrayList
     }*/
+
+    //数组中的逆序对
+    //public static
+
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
