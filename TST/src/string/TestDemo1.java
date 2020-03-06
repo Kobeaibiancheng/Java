@@ -365,6 +365,52 @@ public class TestDemo1 {
         return count;
     }
 
+
+    //寻找字符串中的最长数字串
+    public static String searchLongOfString(String str){
+        int max = 0;
+        int count = 0;//计数器
+        int end = 0;//数字的尾部
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+                count++;
+                if (max < count) {
+                    max = count;
+                    end = i;
+                }
+            }else {
+                count = 0;
+            }
+        }
+        return str.substring(end-max+1,end+1);
+    }
+
+
+    //合法括号序列判断
+    public static boolean chkParenthesis(String str,int n) {
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < n; i++) {
+            if (str.charAt(i) == '(') {
+                stack.push(str.charAt(i));
+            }else if (str.charAt(i) == ')') {
+                if (stack.isEmpty()) {
+                    return false;
+                }else{
+                    stack.pop();
+                }
+            }else {
+                return false;
+            }
+        }
+
+        if (!stack.isEmpty()) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
     public static void main(String[] args) {
         /*//String str1 = new String("hello");
         String str2 = new String("hello");
