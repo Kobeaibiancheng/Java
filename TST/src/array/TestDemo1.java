@@ -385,8 +385,52 @@ public class TestDemo1 {
         ArrayList
     }*/
 
+
+
     //数组中的逆序对
-    //public static
+    public static int InversePairs(int[] array,int n) {
+        if (array == null || n == 0) {
+            return 0;
+        }
+        return mergeSortRecursion(array,0,n-1);
+    }
+    private static int mergeSortRecursion(int[] array, int l, int r) {
+        if (l == r) {
+            return 0;
+        }
+        int mid = (l+r)/2;
+        //逆序对数 = 左边数组的逆序对数 + 右边数组逆序的对数 + 左右结合成新数组中的逆序对数
+        return mergeSortRecursion(array,l,mid) + mergeSortRecursion(array,mid,r)
+                + merge(array,l,mid,r);
+    }
+    private static int merge(int[] array, int left, int mid, int right) {
+        int[] temp = new int[right - left + 1];
+        int index = 0;
+        int i = left;
+        int j = mid+1;
+        int inverseNum = 0;//新增，用来累加数组逆序对
+        while (i <= mid && j <= right) {
+            if (array[i] <= array[j]) {
+                temp[index++] = array[i++];
+
+            }else {
+                //当前一个数组元素大于后一个数组元素时，累加逆序对
+                // s[i] > s[j] 推导出 s[i]...s[mid] > s[j]
+                inverseNum += (mid - i + 1);
+                temp[index++] = array[j++];
+            }
+        }
+        while (i <= mid) {
+            temp[index++] = array[i++];
+        }
+        while (j <= right) {
+            temp[index++] = array[j++];
+        }
+        for (int k = 0; k < temp.length; k++) {
+            array[left++] = temp[k];
+        }
+        return inverseNum;
+    }
 
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
