@@ -2,6 +2,7 @@ package array;
 
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class TestDemo1 {
 
@@ -431,6 +432,63 @@ public class TestDemo1 {
         }
         return inverseNum;
     }
+
+
+    //n个数里出现次数大于等于n/2的数
+    public static void largestOfNums() {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String[] strs = str.split(" ");
+        int[] arr = new int[strs.length];
+        for(int i = 0; i < arr.length; i++) {
+            arr[i] = Integer.valueOf(strs[i]);
+        }
+
+        /**
+         * 保存两个值：一个是数组中的数字，一个是该数字出现的次数
+         * 当我们遍历到下一个数字的时候，如果和我们保存的数字相同，那么次数加一
+         * 如果下一个数字和我们之前保存的数字不同，则次数减一
+         * 如果次数为0，那么我们需要保存下一个数字，并把次数更改为一
+         * 由于我们要找的数字出现的次数比其他数字出现的次数之和还要多，那么要找的
+         * 数字肯定是最后一次把次数设为一时对应的数字
+         *
+         */
+        //保存数字
+        int num = arr[0];
+        //保存次数
+        int count = 0;
+
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == num) {
+                count++;
+            }else if(count > 0) {
+                count--;
+            }else{
+                num = arr[i];
+            }
+        }
+        System.out.println(num);
+    }
+
+    //牛客：计算糖果
+    public static void getNumOfCandy() {
+        Scanner sc = new Scanner(System.in);
+        int y1 = sc.nextInt();
+        int y2 = sc.nextInt();
+        int y3 = sc.nextInt();
+        int y4 = sc.nextInt();
+        //通过四个方程解出三个未知数
+        double a = (y1+y3)/2;
+        double b = (y2+y4)/2;
+        double c = (y4-y2)/2;
+        //带回去验证是否符合四个方程  符合为正确，不符合为No
+        if(a-b == y1 && b-c == y2 && a+b == y3 && b+c == y4){
+            System.out.println((int)a+ " "+(int)b +" "+ (int)c);
+        }else{
+            System.out.println("No");
+        }
+    }
+
 
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
