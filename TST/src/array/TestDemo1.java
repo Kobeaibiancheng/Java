@@ -1,8 +1,7 @@
 package array;
 
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class TestDemo1 {
 
@@ -486,6 +485,71 @@ public class TestDemo1 {
             System.out.println((int)a+ " "+(int)b +" "+ (int)c);
         }else{
             System.out.println("No");
+        }
+    }
+
+    //牛客买苹果
+    public static void buyApples() {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextInt()) {
+            int n = sc.nextInt();
+            System.out.println(count(n));
+        }
+    }
+    private static int count(int n) {
+        if (n%2 != 0 || n < 6 || n == 10) {
+            return -1;
+        }
+        //如果刚好是拿8个拿完
+        if (n%8 == 0) {
+            return n/8;
+        }
+        //对于10个以上的偶数，只要对8取余不为0，就要从前面的1或者2个8中拿出2个，
+        // 把余数补为6（本来余数就是6，就不用拿）  所以+1
+        return 1 + n/8;
+    }
+
+    /**
+     * 牛客：删数   利用模拟循环顺序表实现
+     * 将 0 - N-1 个数放到顺序表中（ArrayList 底层是数组）
+     * 索引 i 从0开始，（i+2）% list.size()   依次删除
+     * 直到顺序表大小 size() = 1 停止  那么list.get(0)就是最后一个将要删除的数
+     */
+    public static void deleteNums(){
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            int n = sc.nextInt();
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                list.add(i);
+            }
+            int i = 0;
+            while (list.size() > 1) {
+                i = (i+2) % list.size();//模拟实现循环顺序表
+                list.remove(i);
+            }
+            System.out.println(list.get(0));
+        }
+    }
+
+    //牛客：删数  利用循环队列来实现
+    public static void deleteNumbers() {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            Queue<Integer> queue = new LinkedList<>();
+            int n = sc.nextInt();
+            for (int i = 0; i < n; i++) {
+                queue.offer(i);
+            }
+            while (queue.size() > 1) {
+                int count = 2;
+                while (count > 0) {
+                    queue.offer(queue.poll());
+                    count--;
+                }
+                queue.poll();
+            }
+            System.out.println(queue.peek());
         }
     }
 
