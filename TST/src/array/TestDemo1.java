@@ -554,6 +554,23 @@ public class TestDemo1 {
     }
 
 
+    //牛客：n个数里最小的k个
+    //垃圾代码
+    public static void searchSmallK(){
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String[] strs = str.split(" ");
+        int[] arr = new int[strs.length-1];
+        for (int i = 0; i < strs.length-1; i++) {
+            arr[i] = Integer.valueOf(strs[i]);
+        }
+        int k = Integer.valueOf(strs[strs.length -1]);
+        Arrays.sort(arr);
+
+        for (int i = 0; i < k; i++) {
+            System.out.println(arr[i] + " ");
+        }
+    }
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
