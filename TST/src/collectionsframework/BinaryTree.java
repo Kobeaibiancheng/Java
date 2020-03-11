@@ -368,6 +368,7 @@ public class BinaryTree {
         return root;
     }
 
+    //最近公共祖先
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null) {
             return null;
@@ -390,6 +391,41 @@ public class BinaryTree {
         }
         return null;
     }
-    
+
+
+    public void tree2strChild(TreeNode t, StringBuffer str) {
+        if(t == null) {
+            return;
+        }
+        str.append(t.value);
+        if(t.left == null) {
+            if(t.right == null){
+                return;
+            }else{
+                str.append("()");
+            }
+        }else{
+            str.append("(");
+            tree2strChild(t.left,str);
+            str.append(")");
+        }
+
+        //以上代码是递归前t的位置
+        if(t.right == null) {
+            return;
+        }else{
+            str.append("(");
+            tree2strChild(t.right,str);
+            str.append(")");
+        }
+    }
+    //leetcode   二叉树创建字符串
+    public String tree2str(TreeNode t) {
+        StringBuffer str = new StringBuffer();
+        tree2strChild(t,str);
+        return str.toString();
+    }
+
+
 
 }
