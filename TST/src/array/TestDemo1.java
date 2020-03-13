@@ -571,6 +571,25 @@ public class TestDemo1 {
             System.out.println(arr[i] + " ");
         }
     }
+
+    /**
+     * 牛客：Fibonacci数列
+     * @param n
+     * 最少需要几步变成一个斐波那契数
+     */
+    public static void stepsIsFib(int n) {
+        int a = 0;
+        int b = 1;
+        int c = 1;
+        while(c < n) {
+            c = a+b;
+            a = b;
+            b = c;
+        }
+        System.out.println((b-n)>(n-a)?n-a:b-n);
+    }
+
+
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
