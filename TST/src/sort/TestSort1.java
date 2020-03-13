@@ -89,9 +89,72 @@ public class TestSort1 {
             }
         }
     }
+
+
+    /**
+     * 向下调整
+     * @param arr
+     * @param root
+     * @param len
+     */
+    public static void adjustDown(int[] arr,int root,int len) {
+        int parent = root;
+        int child = 2*parent+1;
+        while (child < len) {
+            if (child+1 < len && arr[child] < arr[child+1]) {
+                child++;
+            }
+            //child 保存的是最大值的下标
+            if (arr[child] > arr[parent]) {
+                int tmp = arr[child];
+                arr[child] = arr[parent];
+                arr[parent] = tmp;
+                //判断child下面还有没有孩子
+                parent = child;
+                child = 2*parent+1;
+            }else {
+                break;
+            }
+        }
+    }
+
+    public static void createHeap(int[] arr) {
+        for (int i = (arr.length-1-1)/2; i >= 0; i--) {
+            adjustDown(arr,i,arr.length);
+        }
+    }
+
+
+    /**
+     * 堆排
+     *
+     * 时间复杂度：O(n*log2n)
+     * 空间复杂度：O(1)
+     * 建堆的时间复杂度：O(n*log2n)
+     * 一次调整的时间复杂度：O(log2n)
+     * @param arr
+     */
+    public static void heapSort(int[] arr) {
+        createHeap(arr);
+        int end = arr.length-1;
+        while (end > 0) {
+            int tmp = arr[end];
+            arr[end] = arr[0];
+            arr[0] = tmp;
+            adjustDown(arr,0,end);
+            end--;
+        }
+    }
+
+
     public static void main(String[] args) {
-        int[] arr = {9,5,3,10,2,6,7,1,8,4};
-        selectSort(arr);
+        int[] arr = {27,15,19,18,28,34,65,49,25,37};
         System.out.println(Arrays.toString(arr));
+        System.out.println("==================");
+        heapSort(arr);
+        System.out.println(Arrays.toString(arr));
+        /*int[] arr = {9,5,3,10,2,6,7,1,8,4};
+        selectSort(arr);
+        System.out.println(Arrays.toString(arr));*/
     }
 }
