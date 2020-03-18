@@ -1,9 +1,6 @@
 package string;
 
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 public class TestDemo1 {
 
@@ -411,8 +408,93 @@ public class TestDemo1 {
         }
     }
 
+    /**
+     * 生成格雷码
+     * @param n
+     * @return
+     */
+    public static String[] getGray(int n) {
+        // write code here
+        String[] reStr = null;
+        if (n == 1) {
+            reStr = new String[]{"0","1"};
+        }else {
+            String[] strs = getGray(n-1);
+            reStr = new String[2*strs.length];
+            for (int i = 0; i < strs.length; i++) {
+                reStr[i] = "0"+strs[i];
+                reStr[reStr.length-1-i] = "1"+strs[i];
+            }
+        }
+        return reStr;
+
+    }
+
+    /**
+     * 牛客：超长整数相加（字符串相加）
+     * @param addend
+     * @param augend
+     * @return
+     */
+    public static String AddLongInteger(String addend,String augend){
+        int p1 = addend.length()-1;
+        int p2 = augend.length()-1;
+        int carry = 0;
+        StringBuffer sb = new StringBuffer();
+        while (p1 >= 0 || p2 >= 0) {
+            int n1 = p1 >= 0 ? addend.charAt(p1) - '0' : 0;
+            int n2 = p2 >= 0 ? augend.charAt(p2) - '0' : 0;
+            int tmp = n1 + n2 + carry;
+            carry = tmp / 10;
+            sb.append(tmp % 10);
+            p1--;
+            p2--;
+        }
+        if (carry == 1) {
+            sb.append(1);
+        }
+        return sb.reverse().toString();
+    }
+
+
+    // 牛客：个位数统计
+    public static void statisticalSingleDigits(String str) {
+        char[] arr = str.toCharArray();
+        List<Integer> list = new ArrayList<>();
+        /*
+               list有10个item表示0-9，每个item的值表示数字的个数
+         */
+        for (int i = 0; i < 10; i++) {
+            list.add(0);//初始化 每一个item都是0
+        }
+        for (int i = 0; i < arr.length; i++) {
+            //每遇到一个数字 就把值+1
+            list.set(arr[i] - '0',list.get(arr[i] - '0')+1);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) > 0) {
+                System.out.println(i + ":" + list.get(i));
+            }
+        }
+    }
+
+    /**
+     * 牛客：机器人走方格
+     */
+    public static int countWays(int x,int y){
+        if (x == 1 || y ==1) {
+            return 1;
+        }
+        return countWays(x-1,y)+countWays(x,y-1);
+    }
+
+
     public static void main(String[] args) {
-        /*//String str1 = new String("hello");
+        statisticalSingleDigits("10101");
+        /*String str1 = "99999";
+        String str2 = "1";
+        System.out.println(AddLongInteger(str1,str2));
+        //String str1 = new String("hello");
         String str2 = new String("hello");
         String str1 = "hello";
         //String str2 = "hello";
