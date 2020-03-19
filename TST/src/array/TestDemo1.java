@@ -589,6 +589,15 @@ public class TestDemo1 {
         System.out.println((b-n)>(n-a)?n-a:b-n);
     }
 
+    //牛客：不使用运算符 实现两个数相加
+    public static int addAB(int A, int B){
+        while (A != 0) {
+            int tmp = (A^B) << 1;
+            B = A^B;
+            A = tmp;
+        }
+        return B;
+    }
 
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
