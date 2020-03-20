@@ -599,6 +599,69 @@ public class TestDemo1 {
         return B;
     }
 
+    //统计同成绩的个数
+    public static void sameScoreNum() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int n = sc.nextInt();
+            if (n == 0) {
+                return;
+            }
+            int[] arr = new int[n];
+            for(int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+            }
+            int standard = sc.nextInt();
+            int count = 0;
+            for (int i = 0; i < n; i++) {
+                if (arr[i] == standard){
+                    count++;
+                }
+            }
+            System.out.println(count);
+        }
+    }
+
+
+    //牛客：洗牌
+    public static void wishCard() {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t > 0) {
+            int n = sc.nextInt();
+            int k = sc.nextInt();
+            List<Integer> list = new ArrayList<>();
+            for(int i = 0; i < 2*n; i++) {
+                list.add(sc.nextInt());
+            }
+            for(int i = 0; i < k; i++){
+                list = wish(list,n);
+            }
+            for(int i = 0; i < 2*n; i++){
+                System.out.print(list.get(i) + " ");
+            }
+            System.out.println();
+            t--;
+        }
+    }
+
+    private static List<Integer> wish(List<Integer> list, int n) {
+        List<Integer> leftCard = new ArrayList<>();
+        List<Integer> rightCard = new ArrayList<>();
+        for(int i = 0; i < n; i++) {
+            leftCard.add(list.get(i));
+        }
+        for(int i = n; i < 2*n; i++) {
+            rightCard.add(list.get(i));
+        }
+        List<Integer> ret = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            ret.add(leftCard.get(i));
+            ret.add(rightCard.get(i));
+        }
+        return ret;
+    }
+
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
