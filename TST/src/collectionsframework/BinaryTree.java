@@ -427,5 +427,17 @@ public class BinaryTree {
     }
 
 
+    //leetcode   二叉树的镜像
+    public TreeNode mirrorTree(TreeNode root) {
+        if(root == null) {
+            return null;
+        }
+        TreeNode child = root.left;
+        root.left = root.right;
+        root.right = child;
+        mirrorTree(root.left);
+        mirrorTree(root.right);
+        return root;
+    }
 
 }
