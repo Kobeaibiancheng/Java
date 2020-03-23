@@ -662,11 +662,51 @@ public class TestDemo1 {
         return ret;
     }
 
+
+
     public static void main(String[] args) {
         char[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
         /*int[] arr = {1,2,2};
         System.out.println(Arrays.toString(searchRange(arr,2)));*/
         //System.out.println(Arrays.toString(sortedSquares(arr)));
+    }
+
+    //牛客; 排序学生的成绩     Arrays.sort自定义类型    需要该类实现  Comparable接口  并且重写 compareTo方法
+    public static void sortStudentScore() {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Student.sortWay = sc.nextInt();
+        Student[] students = new Student[n];
+        for (int i = 0; i < n; i++) {
+            students[i] = new Student(sc.next(),sc.nextInt());
+        }
+        Arrays.sort(students);
+        for (Student s : students) {
+            System.out.println(s);
+        }
+    }
+}
+class Student implements Comparable<Student>{
+    static int sortWay;
+    String name;
+    int score;
+    Student(String name,int score) {
+        this.name = name;
+        this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " " + this.score;
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        if (sortWay == 1) {
+            return this.score - o.score;
+        }else{
+            return o.score - this.score;
+        }
     }
 }
