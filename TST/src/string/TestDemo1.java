@@ -456,6 +456,26 @@ public class TestDemo1 {
         return sb.reverse().toString();
     }
 
+    //链表 A + B    同字符串相加
+    public static ListNode plusAB(ListNode a, ListNode b) {
+        // write code here
+        ListNode newHead = new ListNode(-1);
+        ListNode cur = newHead;
+        int carry = 0;
+        while(a != null || b != null || carry != 0) {
+            int aVal = a != null ? a.val : 0;
+            int bVal = b != null ? b.val : 0;
+            int sum = aVal + bVal + carry;
+            int nodeVal = sum%10;
+            carry = sum/10;
+            cur.next = new ListNode(nodeVal);
+            cur = cur.next;
+            a = a != null ? a.next : null;
+            b = b != null ? b.next : null;
+        }
+        return newHead.next;
+    }
+
 
     // 牛客：个位数统计
     public static void statisticalSingleDigits(String str) {
@@ -515,5 +535,12 @@ public class TestDemo1 {
         System.out.println(balancedStringSplit(str));*/
 
     }
-
+}
+class ListNode{
+    int val;
+    ListNode next;
+    public ListNode(int val) {
+        this.val = val;
+        this.next = null;
+    }
 }
