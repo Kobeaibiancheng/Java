@@ -686,6 +686,28 @@ public class TestDemo1 {
             System.out.println(s);
         }
     }
+
+    /**
+     * 牛客 ：最难的问题
+     * 实际上就是   ：字母字符加整数的问题  但是不能够超过字符 Z，超过的循环就行
+     */
+    public static void charAddNum() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+
+            //char[] arr = strs.toCharArray();
+            String str = sc.nextLine();
+            char[] arr = str.toCharArray();
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] >= 'A' && arr[i] <= 'Z') {
+                    arr[i] = (char)((arr[i] + 21 - 'A')%26 + 'A');
+                }else{
+                    arr[i] = ' ';
+                }
+            }
+            System.out.println(new String(arr));
+        }
+    }
 }
 class Student implements Comparable<Student>{
     static int sortWay;
