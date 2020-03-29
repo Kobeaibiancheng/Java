@@ -662,6 +662,30 @@ public class TestDemo1 {
         return ret;
     }
 
+    public static void upHigh() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int n = sc.nextInt();
+            int a = sc.nextInt();
+            for(int i = 0; i < n; i++) {
+                int b = sc.nextInt();
+                if(a >= b) {
+                    a += b;
+                }else {
+                    int x = a;
+                    int y = b;
+                    int r = x%y;
+                    while(r > 0) {
+                        x = y;
+                        y = r;
+                        r = x%y;
+                    }
+                    a += y;
+                }
+            }
+            System.out.println(a);
+        }
+    }
 
 
     public static void main(String[] args) {
