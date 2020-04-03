@@ -617,8 +617,75 @@ public class TestDemo1 {
         }
     }
 
+    //整数与IP地址间的转换
+    public static void ipChangeInt() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            String str = sc.nextLine();
+            if (str.contains(".")){
+                String[] strs = str.split("\\.");
+                //需要用long 类型来接收
+                long ip = 0;
+                long a1 = Long.valueOf(strs[0]) << 24;
+                long a2 = Long.valueOf(strs[1]) << 16;
+                long a3 = Long.valueOf(strs[2]) << 8;
+                long a4 = Long.valueOf(strs[3]);
+                ip = a1+a2+a3+a4;
+                System.out.println(ip);
+            }else {
+                long num = Long.valueOf(str);
+                long b1 = num >> 24;
+                long b2 = num >> 16 & (0x00ff);
+                long b3 = num >> 8 & (0x0000ff);
+                long b4 = num &(0x000000ff);
+                System.out.println(b1 + "." + b2 + "." + b3 + "." + b4);
+            }
+        }
+    }
+
+
+    //牛客：找x
+    public static void searchX() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            for(int i = 0; i < n; i++){
+                arr[i] = sc.nextInt();
+            }
+            int x = sc.nextInt();
+            for(int i = 0; i < n; i++) {
+                if(x == arr[i]){
+                    System.out.println(i);
+                    return;
+                }
+            }
+            System.out.println(-1);
+        }
+    }
     public static void main(String[] args) {
-        statisticalSingleDigits("10101");
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            String str = sc.nextLine();
+            if (str.contains(".")){
+                String[] strs = str.split("\\.");
+                long ip = 0;
+                long a1 = Long.parseLong(strs[0]) << 24;
+                long a2 = Long.parseLong(strs[1]) << 16;
+                long a3 = Long.parseLong(strs[2]) << 8;
+                long a4 = Long.parseLong(strs[3]);
+                ip = a1+a2+a3+a4;
+                System.out.println(ip);
+            }else {
+                long num = Long.parseLong(str);
+                long b1 = num >> 24;
+                long b2 = num >> 16 & (0x00ff);
+                long b3 = num >> 8 & (0x0000ff);
+                long b4 = num &(0x000000ff);
+                System.out.println(b1 + "." + b2 + "." + b3 + "." + b4);
+            }
+        }
+        //statisticalSingleDigits("10101");
         /*String str1 = "99999";
         String str2 = "1";
         System.out.println(AddLongInteger(str1,str2));
