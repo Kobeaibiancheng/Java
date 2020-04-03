@@ -663,6 +663,45 @@ public class TestDemo1 {
             System.out.println(-1);
         }
     }
+
+
+    //牛客：守形数
+    //      2 <= n <= 100
+    public static void numberOfKeepShape() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int num = sc.nextInt();
+            int squNum = num*num;
+            while(num > 0) {
+                if(num % 10 != squNum %10) {
+                    System.out.println("No!");
+                    return;
+                }
+                num /= 10;
+                squNum /= 10;
+            }
+            System.out.println("Yes!");
+        }
+
+        /*Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int num = sc.nextInt();
+            int squNum = num*num;
+            int i = 0;
+            if(num >= 2 && num <= 9) {
+                i = 10;
+            }else{
+                i = 100;
+            }
+            if((squNum - num)%i == 0) {
+                System.out.println("Yes!");
+            }else{
+                System.out.println("No!");
+            }
+        }*/
+    }
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while(sc.hasNext()) {
