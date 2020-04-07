@@ -701,7 +701,29 @@ public class TestDemo1 {
         }*/
     }
 
-
+    /**
+     * 牛客：说反话
+     *  Hello World Here I Come
+     *  Come I Here World Hello
+     *  先整体反转  然后单个单词反转
+     */
+    public static void reverseStr() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            String[] strings = sc.nextLine().split(" ");
+            Stack<String> stack = new Stack<>();
+            for (int i = 0; i < strings.length; i++) {
+                stack.push(strings[i]);
+            }
+            for (int i = 0; i < strings.length; i++) {
+                if (i != strings.length-1) {
+                    System.out.print(stack.pop() + " ");
+                }else {
+                    System.out.print(stack.pop());
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while(sc.hasNext()) {
