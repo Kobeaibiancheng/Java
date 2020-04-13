@@ -688,10 +688,27 @@ public class TestDemo1 {
     }
 
 
+    /**
+     * 统计字母
+     */
+    public static void statisticsLetters() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            char[] arr = sc.nextLine().toCharArray();
+            int[] count = new int[256];
+            for(char ch : arr) {
+                count[ch]++;
+            }
+            for(int i = 'A'; i <= 'Z'; i++) {
+                System.out.println((char)i + ":" + count[i]);
+            }
+        }
+    }
     public static void main(String[] args) {
-        char[] arr = {'a','a','b','c','c'};
+        System.out.println(countNumberOf2s(10));
+        /*char[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
-        /*int[] arr = {1,2,2};
+        int[] arr = {1,2,2};
         System.out.println(Arrays.toString(searchRange(arr,2)));*/
         //System.out.println(Arrays.toString(sortedSquares(arr)));
     }
@@ -731,6 +748,23 @@ public class TestDemo1 {
             }
             System.out.println(new String(arr));
         }
+    }
+
+
+    //  2的个数
+    public static int countNumberOf2s(int n) {
+        // write code here
+        int count = 0;
+        StringBuffer s = new StringBuffer();
+        for(int i = 0; i <= n; i++) {
+            s.append(i);
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '2') {
+                count++;
+            }
+        }
+        return count;
     }
 }
 class Student implements Comparable<Student>{
