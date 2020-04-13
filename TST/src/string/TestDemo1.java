@@ -724,6 +724,30 @@ public class TestDemo1 {
             }
         }
     }
+
+    /**
+     * 十六进制转换为十进制
+     */
+    public static void conChangeDec() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            String str = sc.next();
+            int sum = 0;
+            int binary = 1;
+            for(int i = str.length()-1; i >= 2; i--) {
+                char ch = str.charAt(i);
+                if(ch >= 'A' && ch <= 'F') {
+                    sum += (ch - 'A' + 10)*binary;
+                }else {
+                    sum += (ch - '0')*binary;
+                }
+                binary = binary*16;
+            }
+            System.out.println(sum);
+        }
+    }
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while(sc.hasNext()) {
