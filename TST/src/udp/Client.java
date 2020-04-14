@@ -10,7 +10,7 @@ import java.util.Scanner;
 // 重构第二步：读取服务器发回的响应
 public class Client {
     // 这里使用 127.0.0.1 代表本机
-    private static final String serverIP = "49.233.172.121";
+    private static final String serverIP = "127.0.0.1";
 
     public static void main(String[] args) throws IOException {
         // 创建 UDP Socket 的
