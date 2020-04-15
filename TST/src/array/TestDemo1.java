@@ -750,6 +750,26 @@ public class TestDemo1 {
         }
     }
 
+    /**
+     * 最近公共祖先
+     * 思路：满二叉树的子节点与父节点之间的关系为root = child / 2
+     * 利用这个关系，如果a ！= b，就让其中的较大数除以2， 如此循环知道a == b，
+     * 即是原来两个数的最近公共祖先
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int getLCA(int a, int b) {
+        // write code here
+        while(a != b) {
+            if (a > b) {
+                a /= 2;
+            }else {
+                b /= 2;
+            }
+        }
+        return a;
+    }
 
     //  2的个数
     public static int countNumberOf2s(int n) {
