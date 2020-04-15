@@ -747,7 +747,24 @@ public class TestDemo1 {
         }
     }
 
-
+    /**
+     * 空格替换
+     * @param iniString
+     * @param length
+     * @return
+     */
+    public static String replaceSpace(String iniString, int length) {
+        // write code here
+        StringBuffer str = new StringBuffer();
+        for(int i = 0; i < length; i++) {
+            if(iniString.charAt(i) != ' ') {
+                str.append(iniString.charAt(i));
+            }else {
+                str.append("%20");
+            }
+        }
+        return str.toString();
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while(sc.hasNext()) {
