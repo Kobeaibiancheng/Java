@@ -705,7 +705,8 @@ public class TestDemo1 {
         }
     }
     public static void main(String[] args) {
-        System.out.println(countNumberOf2s(10));
+        int[][] arr = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+        System.out.println(Arrays.toString(arrayPrint(arr,4)));
         /*char[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
         int[] arr = {1,2,2};
@@ -786,7 +787,30 @@ public class TestDemo1 {
         }
         return count;
     }
+    public static int[] arrayPrint(int[][] arr, int n) {
+        // write code here
+        int[] ret = new int[n*n];
+        int index = 0;
+        int X = 0;
+        int Y = n-1;
+        while(X < n) {
+            int x = X;
+            int y = Y;
+            while(x < n && y < n) {
+                ret[index++] = arr[x++][y++];
+            }
+            if(Y > 0) {
+                Y--;
+            }else {
+                X++;
+            }
+        }
+        return ret;
+    }
+
+
 }
+
 class Student implements Comparable<Student>{
     static int sortWay;
     String name;
