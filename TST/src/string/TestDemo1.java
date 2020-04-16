@@ -765,6 +765,44 @@ public class TestDemo1 {
         }
         return str.toString();
     }
+
+    /**
+     * 验证回文串
+     * 给定一个字符串，能否通过添加一个字母将其变为回文串
+     */
+    public static void addToPalindrome() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            String str = sc.nextLine();
+            int i = 0;
+            int j = str.length()-1;
+            int flag = 0;
+            while(i <= j) {
+                if(str.charAt(i) != str.charAt(j)) {
+                    if(i+1 <= j && str.charAt(i+1) == str.charAt(j)) {
+                        i++;
+                        flag++;
+                    }else if(j-1 >= i && str.charAt(i) == str.charAt(j-1)) {
+                        j--;
+                        flag++;
+                    }else {
+                        flag += 2;
+                        break;
+                    }
+                }else {
+                    i++;
+                    j--;
+                }
+            }
+            if(flag < 2) {
+                System.out.println("YES");
+            }else {
+                System.out.println("NO");
+            }
+        }
+
+
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while(sc.hasNext()) {
