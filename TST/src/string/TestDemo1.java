@@ -800,8 +800,55 @@ public class TestDemo1 {
                 System.out.println("NO");
             }
         }
+    }
 
+    /**
+     * 删除公共字符
+     *
+     * 输入两个字符串，从第一字符串中删除第二个字符串中所有的字符。
+     * 例如，输入”They are students.”和”aeiou”，则删除之后的第一个字符串变成”Thy r stdnts.”
+     */
+    public static void delSameChar() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            char[] arr = sc.nextLine().toCharArray();
+            Set<Character> set = new HashSet<>();
+            char[] str = sc.nextLine().toCharArray();
+            for(char ch : str) {
+                set.add(ch);
+            }
+            List<Character> list = new ArrayList<>();
+            for(char ch : arr) {
+                if(!set.contains(ch)) {
+                    list.add(ch);
+                }
+            }
+            for(int i = 0; i < list.size(); i++) {
+                System.out.println(list.get(i));
+            }
+        }
+    }
 
+    /**
+     * 句子逆序
+     *
+     * 将一个英文语句以单词为单位逆序排放。例如“I am a boy”，逆序排放后为“boy a am I”
+     * 所有单词之间用一个空格隔开，语句中除了英文字母外，不再包含其他字符
+     */
+    public static void SentencesReverseOrder() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            Stack<String> stack = new Stack<>();
+            String[] strs = sc.nextLine().split(" ");
+            for(int i = 0; i < strs.length; i++) {
+                stack.push(strs[i]);
+            }
+            while(stack.size() > 0) {
+                System.out.print(stack.pop()+ " ");
+            }
+        }
+
+        
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
