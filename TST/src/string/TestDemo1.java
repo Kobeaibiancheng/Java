@@ -847,11 +847,49 @@ public class TestDemo1 {
                 System.out.print(stack.pop()+ " ");
             }
         }
+    }
 
-        
+    /**
+     * 坐标移动
+     */
+    public static void removeXY() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int x = 0;
+            int y = 0;
+            String[] move = sc.nextLine().split(";");
+            for(int i = 0; i < move.length; i++) {
+                String str = move[i];
+                int num = 0;
+                if(str.length() == 3 && str.charAt(1) >= '1' && str.charAt(1) <= '9'
+                        && str.charAt(2) >= '0' && str.charAt(2) <= '9' ) {
+                    num = Integer.valueOf(str.substring(1));
+                }else if(str.length() == 2 && str.charAt(1) >= '1' && str.charAt(1) <= '9') {
+                    num = str.charAt(1) - '0';
+                }else {
+                    continue;
+                }
+                switch(str.charAt(0)) {
+                    case 'A':
+                        x -= num;
+                        break;
+                    case 'D':
+                        x += num;
+                        break;
+                    case 'W':
+                        y += num;
+                        break;
+                    case 'S':
+                        y -= num;
+                        break;
+                }
+            }
+            System.out.println(x + "," + y);
+        }
     }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+
+        /*Scanner sc = new Scanner(System.in);
         while(sc.hasNext()) {
             String str = sc.nextLine();
             if (str.contains(".")){
@@ -873,7 +911,7 @@ public class TestDemo1 {
             }
         }
         //statisticalSingleDigits("10101");
-        /*String str1 = "99999";
+        String str1 = "99999";
         String str2 = "1";
         System.out.println(AddLongInteger(str1,str2));
         //String str1 = new String("hello");
