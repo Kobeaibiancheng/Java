@@ -787,6 +787,13 @@ public class TestDemo1 {
         }
         return count;
     }
+
+    /**
+     * 打印二维数组
+     * @param arr
+     * @param n
+     * @return
+     */
     public static int[] arrayPrint(int[][] arr, int n) {
         // write code here
         int[] ret = new int[n*n];
@@ -808,8 +815,28 @@ public class TestDemo1 {
         return ret;
     }
 
-
+    /**
+     * 连续子数组的最大和
+     */
+    public static void continueMax() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int n = sc.nextInt();
+            int[] nums = new int[n];
+            for(int i = 0; i < n; i++) {
+                nums[i] = sc.nextInt();
+            }
+            int res = nums[0];
+            for(int i = 1; i < nums.length; i++) {
+                nums[i] += Math.max(nums[i - 1], 0);
+                res = Math.max(res, nums[i]);
+            }
+            System.out.println(res);
+        }
+    }
 }
+
+
 
 class Student implements Comparable<Student>{
     static int sortWay;
