@@ -3,7 +3,8 @@ package collectionsframework;
 public class BinaryTreeTest {
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
-        TreeNode root = binaryTree.createTree("ABC##DE#G##F###");
+        binaryTree.postOrderTraversal(binaryTree.createTree());
+        //TreeNode root = binaryTree.createTree("ABC##DE#G##F###");
 
         //TreeNode root = binaryTree.createTree();
         /*binaryTree.postOrderTraversal(root);
@@ -15,7 +16,7 @@ public class BinaryTreeTest {
         //binaryTree.preOrderTraversal(root);
         //System.out.println(binaryTree.preOrderTraversalNor(root));
 
-        binaryTree.preOrderTraversal(root);
+        //binaryTree.preOrderTraversal(root);
     }
 
 }
