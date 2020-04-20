@@ -36,11 +36,11 @@ public class TopK {
 
 
     //向下调整
-    private static void adjustLargeDown(int[] arr,int i,int len) {
+    private static void adjustLargeDown(int[] arr,int i,int end) {
         int parent = i;
         int child = parent*2+1;
-        while (child < len) {
-            if (child+1 < len && arr[child+1] > arr[child]) {
+        while (child <= end) {
+            if (child+1 <= end && arr[child+1] > arr[child]) {
                 child = child+1;
             }
             //child 保存的是孩子中最大值得下标
@@ -69,7 +69,7 @@ public class TopK {
          * 建大小为k的大堆 -》 求最小得k个数
          */
         for (int i = (k-1-1)/2; i >= 0; i--) {
-            adjustLargeDown(kHeap,i,k);
+            adjustLargeDown(kHeap,i,k-1);
         }
         /**
          * 从下标为k依次开始和堆顶元素比较，小于堆顶元素 交换 重新调整
@@ -77,7 +77,7 @@ public class TopK {
         for (int i = k; i < arr.length; i++) {
             if (arr[i] < kHeap[0]) {
                 kHeap[0] = arr[i];
-                adjustLargeDown(kHeap,0,k);
+                adjustLargeDown(kHeap,0,k-1);
                 //k--;
             }
         }
@@ -87,11 +87,11 @@ public class TopK {
 
 
 
-    private static void adjustSmallDown(int[] arr,int i,int k) {
+    private static void adjustSmallDown(int[] arr,int i,int end) {
         int parent = i;
         int child = 2*parent + 1;
-        while(child < k) {
-            if (child+1 < k && arr[child+1] < arr[child]) {
+        while(child <= end) {
+            if (child+1 <= end && arr[child+1] < arr[child]) {
                 child = child+1;
             }
 
@@ -121,7 +121,7 @@ public class TopK {
 
         //建立大小为k的小堆
         for (int i = (k-1-1)/2; i >= 0; i--) {
-            adjustSmallDown(kHeap,i,k);
+            adjustSmallDown(kHeap,i,k-1);
         }
 
         /**
@@ -130,7 +130,7 @@ public class TopK {
         for (int i = k; i < arr.length; i++) {
             if (arr[i] > kHeap[0]){
                 kHeap[0] = arr[i];
-                adjustSmallDown(kHeap,0,k);
+                adjustSmallDown(kHeap,0,k-1);
             }
         }
         return kHeap;
@@ -150,7 +150,6 @@ public class TopK {
 
 
         System.out.println("============================");
-
         /*
             最大的k个数   小堆
          */
