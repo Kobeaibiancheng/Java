@@ -887,7 +887,77 @@ public class TestDemo1 {
             System.out.println(x + "," + y);
         }
     }
+
+    /**
+     * 乒乓球筐
+     */
+    public static void tableTennisBasket() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            StringBuffer sb = new StringBuffer(sc.next());
+            char[] arr = sc.next().toCharArray();
+            boolean b = true;
+            for(char ch : arr) {
+                int index = sb.indexOf(String.valueOf(ch));
+                if(index != -1) {
+                    sb.deleteCharAt(index);
+                }else {
+                    System.out.println("No");
+                    b = false;
+                    break;
+                }
+            }
+            if(b) {
+                System.out.println("Yes");
+            }
+        }
+    }
+
+    public static void searchBrotherWords() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int total = sc.nextInt();
+            String[] words = new String[total];
+            for(int i = 0; i < total; i++) {
+                words[i] = sc.next();
+            }
+            String word = sc.next();
+            int broIndex = sc.nextInt();
+            List<String> list = new ArrayList<>();
+            for(int i = 0; i < total; i++) {
+                if(isBrother(words[i],word)) {
+                    list.add(words[i]);
+                }
+            }
+            System.out.println(list.size());
+            if(list.size() >= broIndex) {
+                Collections.sort(list);
+                System.out.println(list.get(broIndex-1));
+            }
+        }
+    }
+    public static boolean isBrother(String words,String word) {
+        //兄弟单词不能相同      长度相同
+        if(words.equals(word) || words.length() != word.length()) {
+            return false;
+        }
+        //转为字符数组
+        char[] arr1 = words.toCharArray();
+        char[] arr2 = word.toCharArray();
+        //排序字符数组
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        //字符数组内容相同
+        if(!String.valueOf(arr1).equals(String.valueOf(arr2))) {
+            return false;
+        }
+        return true;
+    }
+
+
+
     public static void main(String[] args) {
+
 
         /*Scanner sc = new Scanner(System.in);
         while(sc.hasNext()) {
