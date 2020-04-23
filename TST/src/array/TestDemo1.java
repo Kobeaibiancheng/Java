@@ -468,6 +468,18 @@ public class TestDemo1 {
         }
         System.out.println(num);
     }
+    //数组中出现一半的数
+    public int MoreThanHalfNum_Solution(int [] array) {
+        int x = 0, votes = 0, count = 0;
+        for(int num : array){
+            if(votes == 0) x = num;
+            votes += num == x ? 1 : -1;
+        }
+        // 验证 x 是否为众数
+        for(int num : array)
+            if(num == x) count++;
+        return count > array.length / 2 ? x : 0;
+    }
 
     //牛客：计算糖果
     public static void getNumOfCandy() {
