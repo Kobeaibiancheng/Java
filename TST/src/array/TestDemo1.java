@@ -846,6 +846,48 @@ public class TestDemo1 {
             System.out.println(res);
         }
     }
+
+    //顺序打印 M * N 矩阵
+    public int[] clockwisePrint(int[][] mat, int n, int m) {
+        // write code here
+        int[] ret = new int[n*m];
+        int startX = 0;
+        int startY = 0;
+        int endX = m-1;
+        int endY = n-1;
+        int index = 0;
+        while(startX <= endX && startY <= endY) {
+            if(startX <= endX) {
+                for(int i = startX; i <= endX; i++) {
+                    ret[index++] = mat[startY][i];
+                }
+            }
+
+            if(startY < endY) {
+                for(int i = startY+1; i <= endY; i++) {
+                    ret[index++] = mat[i][endX];
+                }
+            }
+
+            if(startX < endX && endY > startY) {
+                for(int i = endX-1; i >= startX; i--) {
+                    ret[index++] = mat[endY][i];
+                }
+            }
+
+            if(startY < endY && endX > startX) {
+                for(int i = endY-1; i >= startY+1; i--) {
+                    ret[index++]  = mat[i][startX];
+                }
+            }
+
+            startX++;
+            endX--;
+            startY++;
+            endY--;
+        }
+        return ret;
+    }
 }
 
 
