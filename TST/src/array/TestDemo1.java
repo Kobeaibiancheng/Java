@@ -565,6 +565,30 @@ public class TestDemo1 {
         }
     }
 
+    /**
+     * 从1到n  第一次隔1出2，第二次隔2出5，第三次隔3出9
+     * 最后一个出的是几
+     * @param n
+     */
+    public static void outPersonNum(int n) {
+        int count = 1;
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 1; i <= n; i++) {
+            queue.offer(i);
+        }
+        while (queue.size() != 1) {
+            int nums = count;
+            while (nums != 0) {
+                queue.offer(queue.poll());
+                nums--;
+            }
+            queue.poll();
+            count++;
+        }
+        System.out.println(queue.poll());
+    }
+
+
 
     //牛客：n个数里最小的k个
     //垃圾代码
@@ -717,9 +741,10 @@ public class TestDemo1 {
         }
     }
     public static void main(String[] args) {
-        int[][] arr = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+        outPersonNum(11);
+        /*cint[][] arr = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
         System.out.println(Arrays.toString(arrayPrint(arr,4)));
-        /*char[] arr = {'a','a','b','c','c'};
+        har[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
         int[] arr = {1,2,2};
         System.out.println(Arrays.toString(searchRange(arr,2)));*/
