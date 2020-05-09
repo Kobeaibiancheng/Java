@@ -810,6 +810,11 @@ public class TestDemo1 {
     }
 
     //  2的个数
+    /**
+     * 错的代码
+     * @param n
+     * @return
+     */
     public static int countNumberOf2s(int n) {
         // write code here
         int count = 0;
@@ -913,6 +918,31 @@ public class TestDemo1 {
         }
         return ret;
     }
+
+
+    /**
+     * 颠倒二进制位
+     * @param n
+     * @return
+     */
+    public int reverseBits(int n) {
+        int reverseBits = 0;
+        for(int i = 0; i < 32; i++) {
+            int reverse = n&1;
+            reverseBits += reverse << 32-i-1;
+            n = n >>> 1;
+        }
+        return reverseBits;
+    }
+
+    /**
+     * 外形数组
+     * @param n
+     * @return
+     */
+    /*public String countAndSay(int n) {
+
+    }*/
 }
 
 
