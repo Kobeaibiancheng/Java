@@ -13,7 +13,7 @@ public class MyCircularQueue {
     /** Initialize your data structure here.
      * Set the size of the queue to be k. */
     public MyCircularQueue(int k) {
-        this.elem = new int[k+1];
+        this.elem = new int[k];
         this.front = 0;
         this.rear = 0;
         this.usedSize = 0;
@@ -26,8 +26,8 @@ public class MyCircularQueue {
             return false;
         }
         this.elem[this.rear] = value;
-        this.usedSize++;
         this.rear = (this.rear+1)%this.elem.length;
+        this.usedSize++;
         return true;
     }
 
@@ -43,7 +43,7 @@ public class MyCircularQueue {
     }
 
     /** Get the front item from the queue. */
-    public int front() {
+    public int Front() {
         if (isEmpty()) {
             return -1;
         }
@@ -55,18 +55,17 @@ public class MyCircularQueue {
         if (isEmpty()) {
             return -1;
         }
-        int index = this.rear == 0 ? this.elem.length-1 : this.rear-1;
-        return this.elem[index];
+        return this.rear == 0 ? this.elem[this.elem.length-1] : this.elem[this.rear-1];
     }
 
     /** Checks whether the circular queue is empty or not. */
     public boolean isEmpty() {
-        return this.front == this.rear;
+        return this.usedSize == 0;
     }
 
     /** Checks whether the circular queue is full or not. */
     public boolean isFull() {
-        return (this.rear+1)%this.elem.length == this.front;
+        return this.usedSize == this.elem.length;
     }
 
 }
