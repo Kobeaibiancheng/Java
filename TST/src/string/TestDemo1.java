@@ -980,6 +980,23 @@ public class TestDemo1 {
         }
         return -1;
     }
+
+    public static void mergeStrings() {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            String str1 = sc.nextLine();
+            String str2 = sc.nextLine();
+            StringBuffer sb = new StringBuffer();
+            int p1 = 0;
+            int p2 = str2.length()-1;
+            while(p1 <= str1.length()-1 && p2 >= 0) {
+                sb.append(str1.charAt(p1)).append(str2.charAt(p2));
+                p1++;
+                p2--;
+            }
+            System.out.println(sb.toString());
+        }
+    }
     public static void main(String[] args) {
         String str1 = "a";
         String str2 = "";
