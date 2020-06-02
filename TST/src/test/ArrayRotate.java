@@ -30,7 +30,7 @@ public class ArrayRotate {
         int[][] ret = new int[arr[0].length][arr.length];
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[0].length; j++) {
-                ret[3-j][i] = arr[i][j];
+                ret[arr.length-1-j][i] = arr[i][j];
             }
         }
         arr = ret;
@@ -38,8 +38,10 @@ public class ArrayRotate {
     public static void main(String[] args) {
         int[][] arr = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
         ArrayRotate test = new ArrayRotate(arr,4);
-        //test.clockwiseRotate();
-        test.unclockwiseRotate();
+        test.show();
+        System.out.println();
+        test.clockwiseRotate();
+        //test.unclockwiseRotate();
         test.show();
     }
 }
