@@ -110,30 +110,26 @@ public class TestSort3 {
      * 递归写法
      * @param arr
      */
-    /*public static void mergeSort(int[] arr) {
+    public static void mergeSort(int[] arr) {
         mergeSortInternal(arr,0,arr.length-1);
     }
 
     private static void mergeSortInternal(int[] arr,int left,int right) {
-        if (left >= right) {
-            return;
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+            mergeSortInternal(arr,left,mid);
+            mergeSortInternal(arr,mid+1,right);
+            //合并
+            merge(arr,left,mid,right);
         }
-        int mid = left + (right - left) / 2;
-        mergeSortInternal(arr,left,mid);
-        mergeSortInternal(arr,mid+1,right);
-        //合并
-        merge(arr,left,mid,right);
+
 
     }
 
     private static void merge(int[] arr,int left,int mid,int right) {
         int start1 = left;
         int start2 = mid+1;
-        *//**
-         *   3   2   1   9   7   5   6
-         *  left       mid         right
-         *  s1              s2
-         *//*
+
         int[] tmpArr = new int[right-left+1];
         int i = 0;//tmpArr的索引
 
@@ -158,15 +154,15 @@ public class TestSort3 {
         for (int j = 0; j < tmpArr.length; j++) {
             arr[left + j] = tmpArr[j];
         }
-    }*/
+    }
 
 
     /**
      * 归并排序
      * 非递归
-     * @param arr
+     * @param
      */
-    public static void mergeSort(int[] arr) {
+    /*public static void mergeSort(int[] arr) {
         for (int i = 1; i < arr.length; i *= 2) {
             merge(arr,i);
         }
@@ -213,7 +209,7 @@ public class TestSort3 {
         for (int i = 0; i < tmpArr.length; i++) {
             arr[i] = tmpArr[i];
         }
-    }
+    }*/
 
     public static void main(String[] args) {
         int[] arr = {4,3,6,8,2,1,9,5,10,7};
