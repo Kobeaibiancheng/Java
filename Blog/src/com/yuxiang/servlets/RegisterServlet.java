@@ -62,6 +62,8 @@ public class RegisterServlet extends HttpServlet {
             // 把注册成功的用户，放入 Session 中
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
+
+            resp.sendRedirect("login.html");
         } catch (SQLException  e) {
             e.printStackTrace();
             throw new ServletException(e);
