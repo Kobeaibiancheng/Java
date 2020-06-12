@@ -29,8 +29,10 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);
                 writer.println("<h1>登陆成功</h1>");
+                resp.sendRedirect("writer.jsp");
             } else {
                 writer.println("<h1>登陆失败</h1>");
+                resp.sendRedirect("login.html");
             }
         } catch (SQLException e) {
             throw new ServletException(e);
