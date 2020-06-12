@@ -21,9 +21,10 @@ public class PublishServlet extends HttpServlet {
         Part coverImage = req.getPart("cover_image");
         String filename = coverImage.getSubmittedFileName();
         String path = req.getServletContext().getRealPath("images") + "\\" + filename;
-        // String path = "E:\\比特科技\\课程\\JavaWeb\\Java20班\\2020-04-19-Web-HTTP协议-Servlet-博客-2\\out\\artifacts\\2020_04_19_Web_HTTP_Servlet__2_Web_exploded\\images\\" +  filename;
+
         InputStream is = coverImage.getInputStream();
 
+        System.out.println("============");
         // 类似 IO 时，文件复制的代码
         byte[] buffer = new byte[8192];
         int len;
@@ -33,6 +34,7 @@ public class PublishServlet extends HttpServlet {
             }
         }
 
+        System.out.println("看看问题出在哪");
         String title = req.getParameter("title");
         String body = req.getParameter("body");
         String coverImageUrl = "/images/" + filename;
@@ -43,6 +45,7 @@ public class PublishServlet extends HttpServlet {
             return;
         }
 
+        System.out.println("错误在哪里");
         resp.setContentType("text/html; charset=utf-8");
         PrintWriter writer = resp.getWriter();
         try {
