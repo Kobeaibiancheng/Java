@@ -741,15 +741,59 @@ public class TestDemo1 {
         }
     }
     public static void main(String[] args) {
-        outPersonNum(11);
-        /*cint[][] arr = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+        /*outPersonNum(11);
+        cint[][] arr = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
         System.out.println(Arrays.toString(arrayPrint(arr,4)));
         har[] arr = {'a','a','b','c','c'};
         System.out.println(compress(arr));
         int[] arr = {1,2,2};
         System.out.println(Arrays.toString(searchRange(arr,2)));*/
         //System.out.println(Arrays.toString(sortedSquares(arr)));
+        Scanner sc = new Scanner(System.in);
+
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            for(int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+            }
+            for(int i = 0; i < n; i++) {
+                prinf(arr,i);
+            }
+
     }
+
+
+        public static void prinf(int[] arr,int i) {
+            int j = i;
+            int k = i;
+            while(j >= 0 ) {
+                if(arr[j] >= arr[i]) {
+                    j--;
+                }else {
+                    break;
+                }
+            }
+            while (k <= arr.length-1) {
+                if(arr[k] >= arr[i]) {
+                    k++;
+                }else {
+                    break;
+                }
+            }
+            if(j >= 0)  {
+                System.out.print(j + " ");
+            }else {
+                System.out.print(-1 + " ");
+            }
+
+            if(k < arr.length-1) {
+                System.out.print(k);
+            }else{
+                System.out.print(-1);
+            }
+            System.out.println();
+        }
+
 
     //牛客; 排序学生的成绩     Arrays.sort自定义类型    需要该类实现  Comparable接口  并且重写 compareTo方法
     public static void sortStudentScore() {
@@ -943,7 +987,17 @@ public class TestDemo1 {
     /*public String countAndSay(int n) {
 
     }*/
+
+
+
+
+
+
+
+
 }
+
+
 
 
 
