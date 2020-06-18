@@ -21,6 +21,19 @@ public class Greed {
         while (sc.hasNext()) {
             int n = sc.nextInt();//总共n个桌子
             int m = sc.nextInt();
+            //桌子的信息
+            int[] tables = new int[n];
+            for (int i = 0; i < n; i++) {
+                tables[i] = sc.nextInt();
+            }
+
+            //消费者的信息
+            int[][] customer = new int[m][2];
+            for (int i = 0; i < m; i++) {
+                customer[i][0] = sc.nextInt();
+                customer[i][1] = sc.nextInt();
+            }
+
 
         }
     }
