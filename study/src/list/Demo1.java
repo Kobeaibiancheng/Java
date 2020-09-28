@@ -112,6 +112,33 @@ public class Demo1 {
 
     }
 
+    /**
+     * 顺序表划分
+     * @param arr
+     * @param n
+     */
+    public static void partition(int[] arr,int n) {
+        int tmp = arr[0];
+        int i = 0;
+        int j = n-1;
+        while (i < j) {
+            while (i < j && arr[j] > tmp){
+                j--;
+            }
+            if (i < j) {
+                arr[i] = arr[j];
+                i++;
+            }
+            while (i < j && arr[i] < tmp) {
+                i++;
+            }
+            if (i < j) {
+                arr[j] = arr[i];
+                j--;
+            }
+        }
+        arr[i] = tmp;
+    }
 
     /**
      * 合并单链表 头插法
