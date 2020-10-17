@@ -39,9 +39,117 @@ public class Test2018 {
             System.out.println(Arrays.toString(students));
         }
     }
+
+    /**
+     * 输入年月日，问这是今年第几天
+     * @param str
+     * @return
+     */
+    static int howManyDays(String str) {
+        String[] strings = str.split(" ");
+        int count = 0;
+        if (isLeapYear(Integer.valueOf(strings[0]))) {
+            for (int i = 1; i <
+                    Integer.valueOf(strings[1]); i++) {
+                switch(i){
+                    case 1:
+                        count += 31;
+                        break;
+                    case 2:
+                        count += 29;
+                        break;
+                    case 3:
+                        count += 31;
+                        break;
+                    case 4:
+                        count += 30;
+                        break;
+                    case 5:
+                        count += 31;
+                        break;
+                    case 6:
+                        count += 30;
+                        break;
+                    case 7:
+                        count += 31;
+                        break;
+                    case 8:
+                        count += 31;
+                        break;
+                    case 9:
+                        count += 30;
+                        break;
+                    case 10:
+                        count += 31;
+                        break;
+                    case 11:
+                        count += 30;
+                        break;
+                    case 12:
+                        count += 31;
+                        break;
+                }
+            }
+            count += Integer.valueOf(strings[2]);
+            return count;
+        }else {
+            for (int i = 1; i < Integer.valueOf(strings[1]); i++) {
+                switch(i){
+                    case 1:
+                        count += 31;
+                        break;
+                    case 2:
+                        count += 28;
+                        break;
+                    case 3:
+                        count += 31;
+                        break;
+                    case 4:
+                        count += 30;
+                        break;
+                    case 5:
+                        count += 31;
+                        break;
+                    case 6:
+                        count += 30;
+                        break;
+                    case 7:
+                        count += 31;
+                        break;
+                    case 8:
+                        count += 31;
+                        break;
+                    case 9:
+                        count += 30;
+                        break;
+                    case 10:
+                        count += 31;
+                        break;
+                    case 11:
+                        count += 30;
+                        break;
+                    case 12:
+                        count += 31;
+                        break;
+                }
+            }
+            count += Integer.valueOf(strings[2]);
+            return count;
+        }
+    }
+
+    private static boolean isLeapYear(Integer integer) {
+        if (integer % 400 == 0 || (integer % 4 == 0 && integer % 100 != 0)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
-        studentNameAndScore();
-        /*Scanner sc = new Scanner(System.in);
+        System.out.println(howManyDays("2000 2 15"));
+        /*studentNameAndScore();
+        Scanner sc = new Scanner(System.in);
         while (sc.hasNext()) {
             //System.out.println(howManyNumber(sc.nextLine()));
 
