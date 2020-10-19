@@ -50,7 +50,7 @@ public class QuickSort {
 
 
     //挖坑法 ：
-    /*private static int partion(int[] arr,int left,int right) {
+    private static int partion(int[] arr,int left,int right) {
         int i = left;
         int j = right;
         int pivot = arr[left];
@@ -66,10 +66,10 @@ public class QuickSort {
         }
         arr[i] = pivot;
         return i;
-    }*/
+    }
 
     //前后遍历法：
-    private static int partion(int[] arr, int left, int right) {
+    /*private static int partion(int[] arr, int left, int right) {
         int d = left + 1;
         int pivot = arr[left];
         for (int i = left + 1; i <= right; i++) {
@@ -80,7 +80,7 @@ public class QuickSort {
         }
         swap(arr, d - 1, left);
         return d - 1;
-    }
+    }*/
 
 
 
@@ -105,7 +105,7 @@ public class QuickSort {
 
 
     public static void main(String[] args) {
-        int[] arr = {6,1,2,7,9,3,4,5,10,8};
+        int[] arr = {2,3,7,4,5,6};
         quickSort(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
     }
