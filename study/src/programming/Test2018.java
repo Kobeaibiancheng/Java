@@ -147,8 +147,17 @@ public class Test2018 {
     }
 
     public static void main(String[] args) {
-        System.out.println(howManyDays("2000 2 15"));
-        /*studentNameAndScore();
+        int a = 0;
+        int b = 1;
+        System.out.println(a);
+        System.out.println(b);
+        a = a^b;
+        b = a^b;
+        a = a^b;
+        System.out.println(a);
+        System.out.println(b);
+        /*System.out.println(howManyDays("2000 2 15"));
+        studentNameAndScore();
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()) {
             //System.out.println(howManyNumber(sc.nextLine()));
