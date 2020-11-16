@@ -1,8 +1,11 @@
 package programming;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+
+import static programming.SortDemo.quickSort;
 
 public class Demo {
     //合法括号

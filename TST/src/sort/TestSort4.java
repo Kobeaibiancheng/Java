@@ -74,7 +74,8 @@ public class TestSort4 {
         ComparatorByAge comparatorByAge = new ComparatorByAge();
         ComparatorByName comparatorByName = new ComparatorByName();
 
-        Arrays.sort(students);
+        Arrays.sort(students,comparatorByName);
+        //Arrays.sort(students);
         System.out.println(Arrays.toString(students));
     }
 }
