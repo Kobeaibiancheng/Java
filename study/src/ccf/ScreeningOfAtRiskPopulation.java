@@ -1,7 +1,7 @@
 package ccf;
 
 import java.util.Scanner;
-class Main {
+class ScreeningOfAtRiskPopulation {
     public static void test() {
         Scanner sc = new Scanner(System.in);
         int numberPerson = sc.nextInt();
@@ -45,8 +45,4 @@ class Main {
         System.out.println(stay);
     }
 }
-public class ScreeningOfAtRiskPopulation {
-    public static void main(String[] args) {
-        Main.test();
-    }
-}
+
